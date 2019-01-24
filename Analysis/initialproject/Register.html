@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Home</title>
+        <title>Register</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- Optional theme -->
@@ -13,7 +13,7 @@
 <style>
     ul li a
     {
-        color:white;
+        color:green;
     }
     /*
 /* Created by Filipe Pina
@@ -26,7 +26,7 @@
 body, html{
      height: 100%;
  	background-repeat: no-repeat;
- 	background-color: #d3d3d3;
+ 	background-color: lightgreen;
  	font-family: 'Oxygen', sans-serif;
 }
 
@@ -35,18 +35,18 @@ body, html{
 }
 
 h1.title { 
-	font-size: 50px;
-	font-family: 'Passion One', cursive; 
+	font-size: 40px;
+	font-family: "Times New Roman", Times, serif;
 	font-weight: 400; 
 }
 
 hr{
 	width: 10%;
-	color: #fff;
+	color: green;
 }
 
 .form-group{
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 label{
@@ -60,21 +60,21 @@ input::-webkit-input-placeholder {
 }
 
 .main-login{
- 	background-color: #fff;
+ 	background-color: white;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 2px 2px green(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px green(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px green(0, 0, 0, 0.3);
 
 }
 
 .main-center{
- 	margin-top: 30px;
+ 	margin-top: 20px;
  	margin: 0 auto;
- 	max-width: 330px;
+ 	max-width: 400px;
     padding: 40px 40px;
 
 }
@@ -91,7 +91,7 @@ input::-webkit-input-placeholder {
 </style>
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-blue bg-blue fixed-top" style="background-color:royalblue;">
+    <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top" style="background-color:white;">
         
               
                 <div class="container-fluid">
@@ -108,14 +108,14 @@ input::-webkit-input-placeholder {
               <span class="icon-bar"></span>                        
             </button>
          
-            <a class="navbar-brand" href="#" style="color:white">Ayanka supermarket</a>
+            <a class="navbar-brand" href="#" style="color:green">Ayanka supermarket</a>
             
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav" style="color:white;">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Product</a></li>
-              <li><a href="#">Contact Us</a></li>
+            <ul class="nav navbar-nav" style="color:green;">
+              <li class="active"><a href="Home.html">Home</a></li>
+              <li><a href="product.html">Product</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
               
              
              
@@ -133,6 +133,7 @@ input::-webkit-input-placeholder {
 			<div class="row main">
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
+						<hr/>
 	               		<h1 class="title">Registration Form</h1>
 	               		<hr />
 	               	</div>
@@ -144,8 +145,8 @@ input::-webkit-input-placeholder {
 							<label for="name" class="cols-sm-2 control-label">First Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your first Name"/>
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="fname" placeholder="Enter your first Name"/>
 								</div>
 							</div>
 						</div>
@@ -153,8 +154,8 @@ input::-webkit-input-placeholder {
 								<label for="name" class="cols-sm-2 control-label">Last Name</label>
 								<div class="cols-sm-10">
 									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-										<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your last Name"/>
+										<span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="lname" placeholder="Enter your last Name"/>
 									</div>
 								</div>
 							</div>
@@ -162,8 +163,9 @@ input::-webkit-input-placeholder {
 									<label for="name" class="cols-sm-2 control-label">Address</label>
 									<div class="cols-sm-10">
 										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-											<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your address"/>
+											<span class="input-group-addon"><i class="
+												glyphicon glyphicon-home" aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="address" placeholder="Enter your address"/>
 										</div>
 									</div>
 								</div>
@@ -171,18 +173,29 @@ input::-webkit-input-placeholder {
 							<label for="email" class="cols-sm-2 control-label">Email</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+									<span class="input-group-addon"><i class="glyphicon glyphicon-home" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" placeholder="Enter your Email"/>
 								</div>
 							</div>
 						</div>
+						
+							<div class="form-group">
+									<label for="email" class="cols-sm-2 control-label">Phone no</label>
+									<div class="cols-sm-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
+											<input type="text" class="form-control" name="phone" placeholder="Enter your phone number"/>
+										</div>
+									</div>
+									</div>
+									<div>
 
 						<div class="form-group">
 							<label for="username" class="cols-sm-2 control-label">Username</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+									<span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="username" placeholder="Enter your Username"/>
 								</div>
 							</div>
 						</div>
@@ -191,8 +204,8 @@ input::-webkit-input-placeholder {
 							<label for="password" class="cols-sm-2 control-label">Password</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your password"/>
+									<span class="input-group-addon"><i class="	glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="password" placeholder="Enter your password"/>
 								</div>
 							</div>
 						</div>
@@ -201,8 +214,8 @@ input::-webkit-input-placeholder {
 							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Enter your confirm password"/>
+									<span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="confirm" placeholder="Enter your confirm password"/>
 								</div>
 							</div>
 						</div>
@@ -213,9 +226,7 @@ input::-webkit-input-placeholder {
 						<div class="form-group ">
 								<button type="button" class="btn btn-success btn-lg btn-block login-button">Login</button>
 							</div>
-						<div class="login-register">
-				            <a href="index.php">Login</a>
-				         </div>
+
 					</form>
 				</div>
 			</div>

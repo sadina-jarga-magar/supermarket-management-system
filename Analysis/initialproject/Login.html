@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Home|Mbs</title>
+        <title>login</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- Optional theme -->
@@ -11,14 +11,19 @@
 <style>
     ul li a
     {
-        color:white;
+        color:green;
     }
     body, html {
     height: 100%;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+    background-color: lightgreen;
+    font-family: 'Oxygen', sans-serif;
 }
-
+h1.title { 
+	font-size: 40px;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: 400; 
+}
 .card-container.card {
     max-width: 350px;
     padding: 40px 40px;
@@ -37,7 +42,7 @@
  * Card component
  */
 .card {
-    background-color: #F7F7F7;
+    background-color: white;
     /* just in case there no content*/
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
@@ -136,7 +141,7 @@
 .btn.btn-signin:hover,
 .btn.btn-signin:active,
 .btn.btn-signin:focus {
-    background-color: rgb(12, 97, 33);
+    background-color: green;
 }
 
 .forgot-password {
@@ -151,63 +156,64 @@
 </style>
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-blue bg-blue fixed-top" style="background-color:royalblue;">
-
-
-                <div class="container-fluid">
-                        <a class="navbar-brand" href="#" title="">
-                                <img style="max-width:100px; margin-top:-10px"
-                                     src="images.png">
-
-                            </a>
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">;
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#" style="color:white">Abc Movies</a>
-
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav" style="color:white;">
-              <li class="active"><a href="Home.html">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Ticket Rates</a></li>
-
-              <li><a href="#">Contact</a></li>
-                <li><a href="bookmovies.html">Book Movies</a></li>
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="Register.html"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-              <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-          </div>
+            <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top" style="background-color:white;">
+        
+              
+                    <div class="container-fluid">
+                            <a class="navbar-brand" href="#" title="">
+                                    <img style="max-width:110px; height:49px;margin-top:-12px"
+                                         src="logo.jpg">
+                                        
+                                </a>
+              <div class="navbar-header">
+            
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">;
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>                        
+                </button>
+             
+                <a class="navbar-brand" href="#" style="color:green">Ayanka supermarket</a>
+                
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav" style="color:green;">
+                  <li class="active"><a href="Home.html">Home</a></li>
+                  <li><a href="product.html">Product</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
+                  
+                 
+                 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="Register.html"><span class="glyphicon glyphicon-user"></span> Registration</a></li>
+                  <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+              </div>
+            </div>
         </div>
-    </div>
-      </nav>
+          </nav>
+          
 
       <div class="container">
             <div class="container">
                     <div class="card card-container">
-                        <legend><center><h1>login</h1></center></legend>
-                        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-
-                        <p id="profile-name" class="profile-name-card"></p>
+                        <hr/>
+                        <legend><center><h1 class="title">login</h1></center></legend>
+                  
+                     
+                     <p id="profile-name" class="profile-name-card"></p>
                         <form class="form-signin">
                             <span id="reauth-email" class="reauth-email"></span>
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <input type="email" id="inputEmail" class="form-control" placeholder="Enter email address" required autofocus>
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Enter password" required>
                             <div id="remember" class="checkbox">
                                 <label>
                                     <input type="checkbox" value="remember-me"> Remember me
                                 </label>
                             </div>
-                            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-                        </form><!-- /form -->
+                            <button class="btn btn-primary btn-lg btn-block login-button">Sign in</button>
+                        </form>
                         <a href="#" class="forgot-password">
                             Forgot the password?
                         </a>
