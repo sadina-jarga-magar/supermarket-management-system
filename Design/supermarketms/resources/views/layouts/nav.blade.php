@@ -37,26 +37,26 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="{{ url('/welcome') }}">Home</a>
+								<a href="/">Home</a>
 							</li>
 
 							<li>
-								<a href="{{ url('/product') }}">Shop</a>
+								<a href="/product">Shop</a>
 							</li>
 
 							<li>
-								<a href="{{ url('/cart') }}">Features</a>
+								<a href="/cart">Features</a>
 							</li>
 
 							<li>
-								<a href="{{ url('/about') }}">About Us</a>
+								<a href="/about">About Us</a>
 							</li>
 
 							<li>
-								<a href="{{ url('/contact') }}">Contact Us</a>
+								<a href="/contact">Contact Us</a>
 							</li>
 							<li>
-								<a href="{{ url('/help') }}">Help?</a>
+								<a href="/help">Help?</a>
 							</li>
 						</ul>
 					</nav>
@@ -64,7 +64,7 @@
 
 				<!-- Header Icon -->
 				<div class="header-icons">
-					<a href="{{ url('/login') }}" class="header-wrapicon1 dis-block">
+					<a href="{{ route('login') }}" class="header-wrapicon1 dis-block">
 					<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
 

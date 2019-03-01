@@ -18,13 +18,17 @@
 						<h4 class="m-text26 p-b-36 p-t-15">
 							Contact Form
 						</h4>
-
+						<form  action="#" method="POST" enctype="multipart/form-data">
+						
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="Full Name">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="f_name" placeholder="first Name">
+						</div>
+						<div class="bo4 of-hidden size15 m-b-20">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="L_name" placeholder="Last Name">
 						</div>
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="phone-number" placeholder="Phone Number">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="phn_no" placeholder="Phone Number">
 						</div>
 
 						<div class="bo4 of-hidden size15 m-b-20">

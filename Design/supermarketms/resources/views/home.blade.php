@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top:300px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -15,7 +15,17 @@
                     @endif
 
                     You are logged in!
+                   
                 </div>
+                <a class="btn btn-sm btn-primary-outline display-4" href="{{ route('logout') }}" 
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><span class="mbrib-logout mbr-iconfont mbr-iconfont-btn"></span>
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                        </form>
+                                        <a href="{{ url('editprofile')}}">Edit Profile </a>
             </div>
         </div>
     </div>

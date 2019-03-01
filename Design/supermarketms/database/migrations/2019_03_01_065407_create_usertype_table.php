@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStockTable extends Migration
+class CreateUsertypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateStockTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock', function (Blueprint $table) {
-            $table->increments('Stock_id');
-            $table->integer('quantity');
-            $table->integer('P_id')->unsigned();
-            $table->foreign('P_id')->references('P_id')->on('product');
+        Schema::create('usertype', function (Blueprint $table) {
+            $table->increments('usertype_id');
+            $table->string('usertype');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateStockTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stock');
+        Schema::dropIfExists('usertype');
     }
 }

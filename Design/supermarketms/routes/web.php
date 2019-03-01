@@ -14,14 +14,39 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/product', function(){
+    return view('product');
+});//->middleware('auth'); //restrict page without login.
+Route::get('/cart', function(){
+    return view('cart');
+});
+Route::get('/about', function(){
+    return view('about');
+});
+Route::get('/contact', function(){
+    return view('contact');
+});
+Route::get('/help', function(){
+    return view('help');
+});
+Route::get('/insertpt', function(){
+    return view('product.insertpt');
+});
+Route::get('/insertp', function(){
+    return view('product.insertp');
+});
+Route::get('/order', function(){
+    return view('order');
+});
 
-Route::get('/welcome', 'ProductController@openhome');
-Route::get('/product', 'ProductController@openproduct');
-Route::get('/cart', 'ProductController@opencart');
-Route::get('/about', 'ProductController@openabout');
-Route::get('/contact', 'ProductController@opencontact');
-Route::get('/help', 'ProductController@openhelp');
-Route::get('/login', 'HomeController@index');
+//Route::get('product/insertpt','ProductController@create');
+//Route::get('product', 'ProductController@index'); //index
+//Route::post('product', 'ProductController@store'); //store
+
+
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/editprofile','EditProfileController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

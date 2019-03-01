@@ -69,8 +69,11 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'address' => $data['address'],
             'phone_no' => $data['phone_no'],
+            'gender' => $data['sex'], //gender name must be same as sex.
+            'date_of_birth' => $data['date_of_birth'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'usertype_id' => 2,
         ]);
     }
 }

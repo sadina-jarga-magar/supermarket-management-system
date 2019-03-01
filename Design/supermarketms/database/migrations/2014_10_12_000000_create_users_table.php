@@ -18,9 +18,13 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone_no');
+            $table->enum('gender',['Male','Female','Others']);
+            $table->date('date_of_birth');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('usertype_id')->unsigned();
+            $table->foreign('usertype_id')->references('usertype_id')->on('usertype');
             $table->rememberToken();
             $table->timestamps();
         });
