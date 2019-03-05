@@ -8,7 +8,7 @@ use Illuminate\support\Facades\DB;
 
 class ProductController extends Controller
 {
-    protected $image_dir = "uploads/pro duct";
+    protected $image_dir = "uploads/product";
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +18,11 @@ class ProductController extends Controller
    
     public function index()
     {
-        $product = Product::get();
-        return view('product.insertpindex',[
-            'product' => $product
+        $products =  Product::get();
+        return view('product.insertpindex', [
+            'products' => $products
         ]);
+
     }
 
     /**
@@ -53,20 +54,16 @@ class ProductController extends Controller
         $form_req = $req->all();
         $product = new Product();
 
-        if (request()->hasFile('P_img')) {
-            $P_img = request()->file('P_img');
-            $file_extension = $P_img->getClientOriginalExtension();
-            $file_name = md5(time()) . '.' . $file_extension;
-            $P_img->move($this->image_dir, $file_name);
-            $product->P_img = $file_name;
-        }
+       
+        
         $product->P_name = $form_req['P_name'];
         $product->P_description = $form_req['P_description'];
+        //$product->P_img=$form_req['P_img'];
         $product->P_mfdate = $form_req['P_mfdate'];
         $product->P_expdate = $form_req['P_expdate'];
         $product->Rate = $form_req['Rate'];
         $status = $product->save();
-        return redirect()->to('product');
+        return redirect()->to('insertp');
 
     }
 

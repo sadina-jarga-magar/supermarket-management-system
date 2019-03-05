@@ -7,43 +7,49 @@
       <div class="col-md-3"></div>
       <div class="col-md-6">
         <div class="jumbotron" style=" background: -webkit-gradient(white,white);">
-          <form method="POST" enctype="multipart/form-data">
+          <form method="POST" action="{!!url('/updateprofile', Auth::user()->id)!!}" enctype="multipart/form-data">
+          @csrf
+          {!!method_field('put')!!}
             <input type="hidden" name="size" value="1000000">
 
             <div class="form-group">
-              <label for="name"><i class=""></i> Full name :</label>
-              <input type="text" name="name" class="form-control" required>
+              <label for="name"><i class="fa fa-user"></i>Full name :</label>
+              <input type="text" name="name" class="form-control" value="{!!(Auth::user()->name)!!}" required>
             </div>
 			 <div class="form-group">
-              <label for="name"><i class=""></i> Address :</label>
-              <input type="text" name="name" class="form-control" required>
+              <label for="name"><i class="fa fa-address-card"></i> Address :</label>
+              <input type="text" name="address" class="form-control" value="{!!(Auth::user()->address)!!}"required>
             </div>
             <div class="form-group">
-              <label for="name"><i class=""></i>Phone no :</label>
-              <input type="text" name="name" class="form-control" required>
+              <label for="name"><i class="fa fa-phone"></i>Phone no :</label>
+              <input type="text" name="phone_no" class="form-control" value="{!!(Auth::user()->phone_no)!!}"required>
             </div>
             <div class="form-group">
               <label class="col-sm-3">Gender: </label>
               <div class="col-sm-12">
               <label class="radio-inline">
-              <input type="radio" name="sex" value="Female" checked>Female
+              <input type="radio" name="sex" value="Female" @if(Auth::user()->gender == 'Female') checked="checked" @endif>Female
             </label> &nbsp 
             &nbsp  &nbsp  &nbsp 
             <label class="radio-inline">
-             <input type="radio" name="sex" value="Male">Male
+             <input type="radio" name="sex" value="Male" @if(Auth::user()->gender == 'Male') checked="checked" @endif>Male
             </label>
             &nbsp 
             &nbsp  &nbsp  &nbsp 
             <label class="radio-inline">
-            <input type="radio" name="sex" value="Others">Others
+            <input type="radio" name="sex" value="Others" @if(Auth::user()->gender == 'Others') checked="checked" @endif>Others
             </label>
             </div>
             </div>
 
+            <div class="form-group">
+              <label for="dob"><i class="fa fa-calendar"></i>Date Of Birth</label>
+              <input type="date" name="date_of_birth" class="form-control"  value="{!!(Auth::user()->date_of_birth)!!}" required>
+            </div>
 
 			 <div class="form-group">
-              <label for="name"><i class=""></i> Email :</label>
-              <input type="text" name="name" class="form-control" required>
+              <label for="name"><i class="fa fa-envelope-square"></i> Email :</label>
+              <input type="text" name="email" class="form-control" value="{!!(Auth::user()->email)!!}"required>
             </div>
 		<div class="row">
           <div class="col-md-6">
@@ -55,5 +61,14 @@
       </div>
 	  </div>
 	  </div>
-	  
+
 @endsection
+
+<script>
+      var msg = '{{Session::get('success')}}';
+      var exist = '{{Session::has('success')}}';
+      if(exist)
+      {
+        alert(msg);
+      }
+</script>

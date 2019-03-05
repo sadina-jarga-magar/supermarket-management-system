@@ -38,7 +38,7 @@
 			
 			<div class="form-group">
 			<label for="image"><i class="fa fa-file-image-o"></i> Image :</label>
-			<input type="file" class="form-control"  name="P_img" required>	  
+			<input type="file" class="form-control"  name="P_img" >	  
 			</div>
 			
 			<div class="form-group">

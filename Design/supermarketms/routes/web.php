@@ -39,6 +39,10 @@ Route::get('/order', function(){
     return view('order');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 //Route::get('product/insertpt','ProductController@create');
 //Route::get('product', 'ProductController@index'); //index
 //Route::post('product', 'ProductController@store'); //store
@@ -46,7 +50,12 @@ Route::get('/order', function(){
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/editprofile','EditProfileController@index');
+Route::get('/editprofile/{id}','EditProfileController@edit');
+Route::put('/updateprofile/{id}','EditProfileController@update');
 
-Auth::routes();
+Route::get('/productadd','ProductController@create');
+Route::post('/product','ProductController@store');
+Route::get('/insertpindex', 'ProductController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
