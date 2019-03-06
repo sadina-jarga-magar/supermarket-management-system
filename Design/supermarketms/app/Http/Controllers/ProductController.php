@@ -86,13 +86,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        if(!$product) {
-                return redirect()->back();
-        }
-        return view ('product.edit', [
-            'products' => $product
-        ]);
+       return view('product.editproduct');
     }
 
     /**
@@ -104,7 +98,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pro=Product::find($id);
+        $pro->P_name-$request->P_name;
+        $pro->P_description-$request->P_description;
+        $pro->P_mfdate-$request->P_mfdate;
+        $pro->P_expdate-$request->P_expdate;
+        $pro->Rate-$request->Rate;
+        $pro->save();
+        return redirect()->to('editproduct');
     }
 
     /**

@@ -29,9 +29,6 @@ Route::get('/contact', function(){
 Route::get('/help', function(){
     return view('help');
 });
-Route::get('/insertpt', function(){
-    return view('product.insertpt');
-});
 Route::get('/insertp', function(){
     return view('product.insertp');
 });
@@ -49,13 +46,22 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
+//for edit profile
 Route::get('/editprofile','EditProfileController@index');
 Route::get('/editprofile/{id}','EditProfileController@edit');
 Route::put('/updateprofile/{id}','EditProfileController@update');
 
+//for adding product type
+Route::get('/addproducttype',function(){
+    return view('product/insertpt');
+});
+Route::get('/addproducttype','ProductTypeController@index');
+Route::post('/insertpt','ProductTypeController@store');
+
+//for adding product
 Route::get('/productadd','ProductController@create');
 Route::post('/product','ProductController@store');
 Route::get('/insertpindex', 'ProductController@index');
 
-
-
+Route::get('/editproduct/{id}','ProductController@edit'); //edit
+Route::put('/updateproduct/{id}','ProductController@update'); //update
