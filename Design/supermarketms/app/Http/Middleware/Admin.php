@@ -18,6 +18,6 @@ class Admin
         if(Auth::user() && Auth::user()->usertype_id ==1){
             return $next($request);
         }
-      return redirect('welcome');
+      return redirect('home');
     }
 }

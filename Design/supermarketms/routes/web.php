@@ -65,3 +65,8 @@ Route::get('/insertpindex', 'ProductController@index');
 
 Route::get('/editproduct/{id}','ProductController@edit'); //edit
 Route::put('/updateproduct/{id}','ProductController@update'); //update
+
+//for admin dashboard
+Route:: group(['middleware'=>'admin'],function(){
+        Route::get('/admindash','AdminController@admindash');
+});
