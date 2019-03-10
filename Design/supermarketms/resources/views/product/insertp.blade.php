@@ -25,6 +25,18 @@
           <form  action="{!! url('product') !!}" method="POST" enctype="multipart/form-data">
           @csrf
             <input type="hidden" name="size" value="1000000">
+            <div class="form-group">
+            <label for="product name"><i class="fa fa-product-hunt"></i> Product Type:</label>
+            <select class="form-control" placeholder="Choose your product type" name="Ptype_name" required> 
+            <option value="" >select product type </option>
+            <option value="Bakery" >Bakery </option>
+            <option value="Beverages" >Beverages </option>
+            <option value="Packaged_Food" >Packaged Food </option>
+            <option value="vegetables_fruits" >Vegetables & Food</option>
+            <option value="Personalcare_makeup" >Personal care & makeup</option>
+            </select>
+       </div> 
+
 			<div class="form-group">
                 <label for="product name"><i class="fa fa-product-hunt"></i> Product Name :</label>
 		        <input type="text" class="form-control" placeholder="Enter your product name" name="P_name" required>	
@@ -36,10 +48,18 @@
 			</textarea>
 			</div>
 			
-			<div class="form-group">
-			<label for="image"><i class="fa fa-file-image-o"></i> Image :</label>
-			<input type="file" class="form-control"  name="P_img" >	  
-			</div>
+		
+      <div class="form-group">
+            <label for="image"><i class="fa fa-file-image-o"></i> Image :</label>
+              <input type="file" accept=".png, .jpg, .jpeg"  id="uploadImage" name="P_img" class="form-control{{ $errors->has('img') ? ' is-invalid' : '' }}" required>
+              @if ($errors->has('img'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('img') }}</strong>
+                                    </span>
+                                @endif
+         
+        
+            </div>
 			
 			<div class="form-group">
             <label for=" manufacture date"><i class="fa fa-calendar"></i>  Manufactured Date :</label>

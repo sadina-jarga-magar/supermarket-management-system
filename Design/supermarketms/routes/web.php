@@ -46,6 +46,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
 //for edit profile
 Route::get('/editprofile','EditProfileController@index');
 Route::get('/editprofile/{id}','EditProfileController@edit');
@@ -57,6 +58,11 @@ Route::get('/addproducttype',function(){
 });
 Route::get('/addproducttype','ProductTypeController@index');
 Route::post('/insertpt','ProductTypeController@store');
+
+//for admin edit profile
+Route::get('/admineditprofile/{id}','AdminEditProfileController@index');
+
+Route::put('/adminupdateprofile/{id}','AdminEditProfileController@update');
 
 //for adding product
 Route::get('/productadd','ProductController@create');
@@ -70,3 +76,7 @@ Route::put('/updateproduct/{id}','ProductController@update'); //update
 Route:: group(['middleware'=>'admin'],function(){
         Route::get('/admindash','AdminController@admindash');
 });
+
+//for contact
+Route::post('/contactinfo','ContactController@store');//form ma call garey ko route
+

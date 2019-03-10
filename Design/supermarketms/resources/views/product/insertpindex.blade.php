@@ -24,7 +24,9 @@
                     <td>{!! $product->P_id !!}</td>
                         <td>{!! str_limit($product->P_name,60) !!}</td>
                         <td>{!! str_limit($product->P_description,2000) !!}</td>
-                        <td>image</td>
+                        <td>
+                            <img src="/{{ $product->P_img}}" style="height:100px; width:110px;">
+                        </td>
                         <td> {!! str_limit($product->P_mfdate) !!}</td>
                         <td>{!! str_limit($product->P_expdate) !!}</td>
                         <td>{!! str_limit($product->Rate) !!}</td>

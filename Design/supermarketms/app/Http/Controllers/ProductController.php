@@ -8,7 +8,7 @@ use Illuminate\support\Facades\DB;
 
 class ProductController extends Controller
 {
-    protected $image_dir = "uploads/product";
+   
     /**
      * Display a listing of the resource.
      *
@@ -43,27 +43,40 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
-            'P_name' => 'required | max:150',
-            'P_description' => 'nullable|max:1200',
-            'P_img' => 'nullable'
-        ], [
-            'P_name.required' => 'Product name is required'
-        ]);
+        // $this->validate(request(), [
+        //     'P_name' => 'required | max:150',
+        //     'P_description' => 'nullable|max:1200',
+            
+        // ], [
+        //     'P_name.required' => 'Product name is required'
+        // ]);
         $req = request();
         $form_req = $req->all();
         $product = new Product();
+//image
+       $pictureInfo = $request->file('P_img');
 
-       
-        
+        $picName = $pictureInfo->getClientOriginalName();
+
+        $folder = "itemImages/";
+
+        $pictureInfo->move($folder,$picName);
+
+        $picUrl = $folder.$picName;
+        if(Product::where('P_img', '=', $picUrl)->exists()) 
+        {
+            return redirect('/insertp')->with('itemNameExists','Please!!insert image with another name');
+        }
+        //
         $product->P_name = $form_req['P_name'];
         $product->P_description = $form_req['P_description'];
-        //$product->P_img=$form_req['P_img'];
+        $product->P_img=$picUrl;
         $product->P_mfdate = $form_req['P_mfdate'];
         $product->P_expdate = $form_req['P_expdate'];
         $product->Rate = $form_req['Rate'];
+        $product->Ptype_id = 1;
         $status = $product->save();
-        return redirect()->to('insertp');
+        return redirect()->to('insertpindex');
 
     }
 

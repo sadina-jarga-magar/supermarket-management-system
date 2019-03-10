@@ -10,9 +10,14 @@
 
 				<!-- Header Icon -->
 				<div class="header-icons3 p-t-38 p-b-60 p-l-8">
-					<a href="#" class="header-wrapicon1 dis-block">
+			
+			<a href="/admineditprofile" class="header-wrapicon1 dis-block">
 						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
+			
+					
+				
+			
 
 					<span class="linedivide1"></span>
 
@@ -36,6 +41,9 @@
 									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										Check Out
 									</a>
+						
+		
+
 								</div>
 							</div>
 						</div>
@@ -47,7 +55,7 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="/insertpt">Product Type</a>
+								<a href="/addproducttype">Product Type</a>
 								<ul class="sub_menu">
 									<li><a href="/insertpt">INSERT</a></li>
 								</ul>
@@ -60,6 +68,18 @@
 							<li>
 								<a href="/order">Order</a>
 							</li>
+							<li>
+								<a href="{!!url('/admineditprofile', Auth::user()->id)!!}">Edit Profile</a>
+							</li>
+							<a class="btn btn-sm btn-primary-outline display-4" href="{{ route('logout') }}" 
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><span class="mbrib-logout mbr-iconfont mbr-iconfont-btn"></span>
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                        </form>
+                                        
 						</ul>
 					</nav>
 				</div>
