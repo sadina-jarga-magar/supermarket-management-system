@@ -43,12 +43,12 @@
                         <td>{!! str_limit($products->Ptype_name,60) !!}</td>
                         <td>{!! $products->created_at !!}</td>
                         <td>
-                            
-                            <form action="" method="POST">
+                              <button type="submit" name="edit" class="btn btn-primary btn-sm"> Edit</button>
+                            <form action="{!! url('addproducttype',[$products->Ptype_id]) !!}" method="POST">
                             {{ csrf_field() }} 
                                 {!! method_field('DELETE') !!}
                                 
-                                <button type="submit" name="edit" class="btn btn-primary btn-sm"> Edit</button>
+                              
                                 <button type="submit"name="delete" class="btn btn-danger btn-sm"> Delete</button>
                             </form>
                         </td>

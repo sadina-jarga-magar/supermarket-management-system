@@ -94,6 +94,8 @@ class ProductTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product=ProductType::find($id);
+        $product->delete();
+         return redirect()->to('/addproducttype')->withSuccess('Product type is deleted successfully!!');
     }
 }

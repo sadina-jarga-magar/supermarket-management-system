@@ -1,5 +1,5 @@
 @extends('layouts.adminlayout')
-@section('title')  @stop
+@section('title') @stop
 @section('content')
 <div class="container" style="margin-top: 10%;">
     <h1 class="text-center" style="margin-bottom: 2%; padding: -10px;"> Edit Your Profile</h1>

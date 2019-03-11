@@ -80,3 +80,10 @@ Route:: group(['middleware'=>'admin'],function(){
 //for contact
 Route::post('/contactinfo','ContactController@store');//form ma call garey ko route
 
+//for product type delete
+Route::delete('/addproducttype/{id}','ProductTypeController@destroy');
+//for product delete
+Route::delete('/insertpindex/{id}','ProductController@destroy');
+//for product update
+Route::get('/insertp/{id}','ProductController@edit');
+// Route::put('/insertpindex/{id}','ProductController@update');

@@ -99,7 +99,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-       return view('product.editproduct');
+       return view('product.insertp');
     }
 
     /**
@@ -118,7 +118,7 @@ class ProductController extends Controller
         $pro->P_expdate-$request->P_expdate;
         $pro->Rate-$request->Rate;
         $pro->save();
-        return redirect()->to('editproduct');
+        return redirect()->to('insertpindex');
     }
 
     /**
@@ -129,9 +129,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        $product->delete();
-        return redirect()->back();
+        $products = Product::find($id);
+        $products->delete();
+         return redirect()->to('/insertpindex')->withSuccess('Product is deleted successfully!!');
 
     }
 }

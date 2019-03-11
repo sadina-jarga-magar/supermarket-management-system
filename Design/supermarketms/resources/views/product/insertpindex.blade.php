@@ -31,12 +31,20 @@
                         <td>{!! str_limit($product->P_expdate) !!}</td>
                         <td>{!! str_limit($product->Rate) !!}</td>
                         <td>{!! $product->created_at !!}</td>
+
                         <td>
-                            <a href="{!! url('/editproduct',$product->P_id) !!}"  class="btn btn-primary btn-sm">Edit</a>
-                            <form  method="POST">
-                                @csrf
+                            <form action="{!! url('insertp',[$product->P_id]) !!}" method="POST">
+                            {{ csrf_field() }} 
+                                {!! method_field('put') !!}
+                                 <button type="submit" name="edit" class="btn btn-primary btn-sm"> Edit</button>
+                            </form>
+                             
+                            <form action="{!! url('insertpindex',[$product->P_id]) !!}" method="POST">
+                            {{ csrf_field() }} 
                                 {!! method_field('DELETE') !!}
-                                <button type="submit" class="btn btn-danger btn-sm"> Delete</button>
+                                
+                               
+                                <button type="submit"name="delete" class="btn btn-danger btn-sm"> Delete</button>
                             </form>
                         </td>
                     </tr>

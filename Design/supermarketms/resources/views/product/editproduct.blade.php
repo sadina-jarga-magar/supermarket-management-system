@@ -23,7 +23,7 @@
       <div class="col-md-3"></div>
       <div class="col-md-6">
         <div class="jumbotron" style=" background: -webkit-linear-gradient(lightblue,pink,lightblue);">
-          <form  action="{!! url('/updateproduct',$product->P_id) !!}" method="POST" enctype="multipart/form-data">
+          <form  action="{!! url('updateproduct',$product->P_id) !!}" method="POST" enctype="multipart/form-data">
           @csrf
           {!! method_field('put')!!}
             <input type="hidden" name="size" value="1000000">
