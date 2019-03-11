@@ -63,7 +63,7 @@ class ProductController extends Controller
         $pictureInfo->move($folder,$picName);
 
         $picUrl = $folder.$picName;
-        if(Product::where('P_img', '=', $picUrl)->exists()) 
+        if(Product::where('P_img', '=', $picUrl)->exists()) //Product from model name.
         {
             return redirect('/insertp')->with('itemNameExists','Please!!insert image with another name');
         }

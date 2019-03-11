@@ -24,17 +24,15 @@
 					</h3>
 
 					<p class="p-b-28">
-						Phasellus egestas nisi nisi, lobortis ultricies risus semper nec. Vestibulum pharetra ac ante ut pellentesque. Curabitur fringilla dolor quis lorem accumsan, vitae molestie urna dapibus. Pellentesque porta est ac neque bibendum viverra. Vivamus lobortis magna ut interdum laoreet. Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat volutpat. Donec iaculis lectus a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum, turpis ut commodo efficitur, quam velit convallis ipsum, et maximus enim ligula ac ligula. Vivamus tristique vulputate ultricies. Sed vitae ultrices orci.
+						Little Mart supermarket was established in 2016 by sadina j magar,the company's owner and Chairman,as a single shutter.since then,Mrs magar who gave up a lucrative carrer in banking to dedicate herself to the store,has overseen the company as it has grown from its humble beginnings to becoming a household name in the country. Todat,little mart is one of the leading supermarket,spread out in kathmandu the capital city and economic hub and in all major cities around the country.it is one of the trusted brands and sees a daily footfall of over 50,000 patrons. Little Mart offers a range of 120,000 products from local and international suppliers.Ranging from groceries and fresh produce; cosmetics and bakery; a broad range of international liquor. Little Mart is commited to providing products of the highest quality,for the best prices.
 					</p>
 
 					<div class="bo13 p-l-29 m-l-9 p-b-10">
 						<p class="p-b-11">
-							Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
+							little Mart is at the heart of our commitment to creating opportunities and bringing value to customers and communities around nepal. 
 						</p>
 
-						<span class="s-text7">
-							- Steve Job’s
-						</span>
+				
 					</div>
 				</div>
 			</div>

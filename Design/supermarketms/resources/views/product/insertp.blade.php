@@ -51,10 +51,10 @@
 		
       <div class="form-group">
             <label for="image"><i class="fa fa-file-image-o"></i> Image :</label>
-              <input type="file" accept=".png, .jpg, .jpeg"  id="uploadImage" name="P_img" class="form-control{{ $errors->has('img') ? ' is-invalid' : '' }}" required>
-              @if ($errors->has('img'))
+              <input type="file" accept=".png, .jpg, .jpeg"  id="uploadImage" name="P_img" class="form-control{{ $errors->has('P_img') ? ' is-invalid' : '' }}" required>
+              @if ($errors->has('P_img'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('img') }}</strong>
+                                        <strong>{{ $errors->first('P_img') }}</strong>
                                     </span>
                                 @endif
          
