@@ -17,7 +17,7 @@
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 							<!-- Button -->
-							<a href="product.php" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 								Shop Now
 							</a>
 						</div>
@@ -36,7 +36,7 @@
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
 							<!-- Button -->
-							<a href="product.php" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 								Shop Now
 							</a>
 						</div>
@@ -55,7 +55,7 @@
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
 							<!-- Button -->
-							<a href="product.php" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 								Shop Now
 							</a>
 						</div>
@@ -77,7 +77,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="product.php" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Bakery
 							</a>
 						</div>
@@ -89,7 +89,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="product.php" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Beverages
 							</a>
 						</div>
@@ -103,7 +103,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="product.php" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Vegetables & Fruits
 							</a>
 						</div>
@@ -115,7 +115,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="product.php" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Packaged Food
 							</a>
 						</div>
@@ -129,7 +129,7 @@
 
 						<div class="block1-wrapbtn w-size2">
 							<!-- Button -->
-							<a href="product.php" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+							<a href="/product" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
 								Personal Care & makeup
 							</a>
 						</div>
@@ -150,7 +150,7 @@
 
 							<div class="w-size2 p-t-25">
 								<!-- Button -->
-								<a href="register.php" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+								<a href="/register" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
 									Sign Up
 								</a>
 							</div>
@@ -292,8 +292,8 @@
 					Cash on delivery
 				</h4>
 
-				<a href="about.php" class="s-text11 t-center">
-					Click here for more info
+				<a href="/help" class="s-text11 t-center">
+					<u>Click here for more info</u>
 				</a>
 			</div>
 

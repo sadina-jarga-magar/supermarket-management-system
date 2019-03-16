@@ -81,6 +81,20 @@
 										Rs {!! $products->Rate !!}
 									</span>
 								</div>
+								<div class="block2-txt p-t-20">
+									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+										Description: {!! $products->P_description !!}
+									</a>
+									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+										Mfd: {!! $products->P_mfdate !!}
+									</a>
+									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+										Exp: {!! $products->P_expdate !!}
+									</a>
+									
+
+									
+								</div>
 							</div>
 						</div>
 					</div>

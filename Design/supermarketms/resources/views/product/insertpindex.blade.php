@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" style="margin-left:22%;">
         <h2>List of all product</h2>
-        <a href="/insertp" type="button" class="btn btn-info btn-sm float-right mb-2">Add New </a>
+        <a href="/insertp" type="button" class="btn btn-primary btn-sm float-right mb-2">Add New </a>
         <table class="table table-bordered">
             <thead>
             <tr>

@@ -30,30 +30,30 @@
 
 				<ul>
 					<li class="p-b-9">
-						<a href="product.php" class="s-text7">
+						<a href="/product" class="s-text7">
 							Bakery
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="product.php" class="s-text7">
+						<a href="/product" class="s-text7">
 							Beverages
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="product.php" class="s-text7">
+						<a href="/product" class="s-text7">
 							Vegetables and Fruits
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="product.php" class="s-text7">
+						<a href="/product" class="s-text7">
 							Packaged Food
 						</a>
 					</li>
 					<li class="p-b-9">
-						<a href="product.php" class="s-text7">
+						<a href="/product" class="s-text7">
 							Personal care & makeup
 						</a>
 					</li>
@@ -67,25 +67,25 @@
 
 				<ul>
 					<li class="p-b-9">
-						<a href="product.php" class="s-text7">
+						<a href="/product" class="s-text7">
 							Search
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="about.php" class="s-text7">
+						<a href="/about" class="s-text7">
 							About Us
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="contact.php" class="s-text7">
+						<a href="/contact" class="s-text7">
 							Contact Us
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="index.php" class="s-text7">
+						<a href="/" class="s-text7">
 							Returns
 						</a>
 					</li>

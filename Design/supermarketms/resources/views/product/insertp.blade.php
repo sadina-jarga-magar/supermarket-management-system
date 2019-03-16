@@ -82,6 +82,6 @@
 	  </form>
      </div>
    </div>
-    <a href="/insertpindex" type="button" class="btn btn-info btn-sm float-right mb-2">view </a>
+    <a href="/insertpindex" type="button" class="btn btn-success btn-sm float-right mb-2">View Product</a>
   @endsection
   
