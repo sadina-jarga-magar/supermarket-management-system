@@ -82,8 +82,23 @@ Route::post('/contactinfo','ContactController@store');//form ma call garey ko ro
 
 //for product type delete
 Route::delete('/addproducttype/{id}','ProductTypeController@destroy');
+
 //for product delete
 Route::delete('/insertpindex/{id}','ProductController@destroy');
-//for product update
-Route::get('/insertp/{id}','ProductController@edit');
-// Route::put('/insertpindex/{id}','ProductController@update');
+
+//for product update/edit
+Route::get('product/editproduct/{id}', 'ProductController@edit');
+Route::put('insertpindex/{id}', 'ProductController@update');
+
+//Product Category fetch
+Route::get('product', 'ProductTypeController@category');
+
+//for product type name retrieve
+ Route::get('insertp','ProductController@getProductType');
+
+ //for product type update/edit
+ Route::get('product/editproducttype/{id}', 'ProductTypeController@edit');
+ Route::put('insertpt/{id}','ProductTypeController@update');
+
+//Product  fetch
+//Route::get('product', 'ProductController@getproduct');

@@ -33,12 +33,13 @@
                         <td>{!! $product->created_at !!}</td>
 
                         <td>
-                            <form action="{!! url('insertp',[$product->P_id]) !!}" method="POST">
+                            <!-- <form action="{!! url('product/insertp',[$product->P_id]) !!}" method="POST">
                             {{ csrf_field() }} 
                                 {!! method_field('put') !!}
                                  <button type="submit" name="edit" class="btn btn-primary btn-sm"> Edit</button>
-                            </form>
-                             
+                            </form> -->
+                            <a href="{!! url('product/editproduct',$product->P_id) !!}" type="button" class="btn btn-success btn-sm">Edit</a>  
+                                                   
                             <form action="{!! url('insertpindex',[$product->P_id]) !!}" method="POST">
                             {{ csrf_field() }} 
                                 {!! method_field('DELETE') !!}

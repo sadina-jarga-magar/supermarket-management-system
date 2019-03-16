@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
 
@@ -74,7 +75,7 @@ class ProductController extends Controller
         $product->P_mfdate = $form_req['P_mfdate'];
         $product->P_expdate = $form_req['P_expdate'];
         $product->Rate = $form_req['Rate'];
-        $product->Ptype_id = 1;
+        $product->Ptype_id = $form_req['Ptype_name'];
         $status = $product->save();
         return redirect()->to('insertpindex');
 
@@ -99,7 +100,14 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-       return view('product.insertp');
+        $product = Product::find($id);
+
+        $producttype = new ProductType();
+        $producttype = $producttype->get();
+        return view('product.editproduct',['product'=>$product],[
+            'producttype'=>$producttype]);
+
+      // return view('product.editproduct')->with('product',$product);
     }
 
     /**
@@ -112,11 +120,13 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $pro=Product::find($id);
-        $pro->P_name-$request->P_name;
-        $pro->P_description-$request->P_description;
-        $pro->P_mfdate-$request->P_mfdate;
-        $pro->P_expdate-$request->P_expdate;
-        $pro->Rate-$request->Rate;
+        $pro->Ptype_id=$request->Ptype_name;
+        $pro->P_name=$request->P_name;
+        $pro->P_description=$request->P_description;
+        $pro->P_img='vdcshdc.jpg';
+        $pro->P_mfdate=$request->P_mfdate;
+        $pro->P_expdate=$request->P_expdate;
+        $pro->Rate=$request->Rate;
         $pro->save();
         return redirect()->to('insertpindex');
     }
@@ -134,4 +144,15 @@ class ProductController extends Controller
          return redirect()->to('/insertpindex')->withSuccess('Product is deleted successfully!!');
 
     }
+    public function getProductType()
+    {
+        $producttype = new ProductType();
+        $producttype = $producttype->get();
+        return view('product.insertp',[
+            'producttype'=>$producttype]);
+    }
+
+
+    
 }
+

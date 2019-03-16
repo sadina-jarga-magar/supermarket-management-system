@@ -28,23 +28,20 @@
             <div class="form-group">
             <label for="product name"><i class="fa fa-product-hunt"></i> Product Type:</label>
             <select class="form-control" placeholder="Choose your product type" name="Ptype_name" required> 
-            <option value="" >select product type </option>
-            <option value="Bakery" >Bakery </option>
-            <option value="Beverages" >Beverages </option>
-            <option value="Packaged_Food" >Packaged Food </option>
-            <option value="vegetables_fruits" >Vegetables & Food</option>
-            <option value="Personalcare_makeup" >Personal care & makeup</option>
+           @foreach($producttype as $prod)
+           <option value="{{ $prod->Ptype_id }}">{{$prod->Ptype_name}}</option>
+           @endforeach
             </select>
        </div> 
-
+       
 			<div class="form-group">
                 <label for="product name"><i class="fa fa-product-hunt"></i> Product Name :</label>
-		        <input type="text" class="form-control" placeholder="Enter your product name" name="P_name" required>	
+		        <input type="text" class="form-control" placeholder="Enter your product name" name="P_name"  required>	
 		   </div>	
 
             <div class="form-group">
               <label for="product description"><i class="fa fa-sticky-note"></i> Product Description :</label>
-              <textarea class="form-control" placeholder="Enter description" name="P_description" rows="4"> 
+              <textarea class="form-control" placeholder="Enter description" name="P_description" rows="4" required> 
 			</textarea>
 			</div>
 			
@@ -79,11 +76,12 @@
 		<div class="row">
           <div class="col-md-6">
             <input type="submit" name="add" class="btn btn-success form-control" value="ADD"><br><br>
-			<input type="submit" name="update" class="btn btn-info form-control" value="UPDATE">
+	
           </div>
         </div>
 	  </form>
      </div>
    </div>
+    <a href="/insertpindex" type="button" class="btn btn-info btn-sm float-right mb-2">view </a>
   @endsection
   

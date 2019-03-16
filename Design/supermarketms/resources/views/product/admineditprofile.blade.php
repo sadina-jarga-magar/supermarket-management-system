@@ -26,7 +26,6 @@
             </div>
             <div class="form-group">
               <label class="col-sm-3">Gender: </label>
-              <div class="col-sm-12">
               <label class="radio-inline">
               <input type="radio" name="sex" value="Female" @if(Auth::user()->gender == 'Female') checked="checked" @endif>Female
             </label> &nbsp 
@@ -40,8 +39,7 @@
             <input type="radio" name="sex" value="Others" @if(Auth::user()->gender == 'Others') checked="checked" @endif>Others
             </label>
             </div>
-            </div>
-
+         
             <div class="form-group">
               <label for="dob"><i class="fa fa-calendar"></i>Date Of Birth</label>
               <input type="date" name="date_of_birth" class="form-control"  value="{!!(Auth::user()->date_of_birth)!!}" required>

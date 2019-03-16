@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\ProductType;
 
 use Illuminate\Http\Request;
+use DB;
 
 
 class ProductTypeController extends Controller
@@ -71,7 +72,8 @@ class ProductTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producttype = ProductType::find($id);
+        return view('product.editproducttype')->with('producttype',$producttype); //producttype is objects
     }
 
     /**
@@ -83,7 +85,10 @@ class ProductTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producttype=ProductType::find($id);
+        $producttype->Ptype_name=$request->Ptype_name;
+        $producttype->save();
+        return redirect()->to('/addproducttype');
     }
 
     /**
@@ -97,5 +102,20 @@ class ProductTypeController extends Controller
         $product=ProductType::find($id);
         $product->delete();
          return redirect()->to('/addproducttype')->withSuccess('Product type is deleted successfully!!');
+    }
+
+    public function category()
+    {
+        $producttype=new ProductType();
+        $producttype=$producttype->get();
+
+
+
+
+
+     $getpro = DB::table('product')->get()->toArray();
+       return view('product',compact('producttype','getpro'));
+
+     
     }
 }
