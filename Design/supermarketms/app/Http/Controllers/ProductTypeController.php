@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\ProductType;
-
 use Illuminate\Http\Request;
 use DB;
 
@@ -109,13 +108,11 @@ class ProductTypeController extends Controller
         $producttype=new ProductType();
         $producttype=$producttype->get();
 
-
-
-
-
-     $getpro = DB::table('product')->get()->toArray();
-       return view('product',compact('producttype','getpro'));
-
-     
+        $getpro = DB::table('product')
+        ->join('producttype','producttype.Ptype_id','=','product.Ptype_id')
+        ->select('*')
+        ->get()
+        ->toArray();
+        return view('product',compact('producttype','getpro')); 
     }
 }

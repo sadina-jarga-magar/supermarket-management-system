@@ -17,9 +17,9 @@ Route::get('/', function () {
 Route::get('/product', function(){
     return view('product');
 });//->middleware('auth'); //restrict page without login.
-Route::get('/cart', function(){
-    return view('cart');
-});
+
+Route::get('/cart', 'AddcartController@show');
+
 Route::get('/about', function(){
     return view('about');
 });
@@ -102,3 +102,8 @@ Route::get('product', 'ProductTypeController@category');
 
 //Product  fetch
 //Route::get('product', 'ProductController@getproduct');
+//add to cart
+Route::post('/addcart/{id}','AddcartController@create');
+
+//delete cart
+Route::delete('/cart/{id}','AddcartController@destroy');

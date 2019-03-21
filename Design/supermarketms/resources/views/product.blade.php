@@ -50,6 +50,14 @@
 							Showing 1–12 of 16 results
 						</span>
 					</div>
+					<script type="text/javascript">
+						var exist='{{Session::has('passed')}}';
+						var msg='{{Session::get('passed')}}';
+						if(exist)
+						{
+							alert(msg);
+						}
+					</script>
 
 				<!-- Product -->
 				@foreach ($getpro as $products)
@@ -65,15 +73,22 @@
 
 										<div class="block2-btn-addcart w-size1 trans-0-4">
 											<!-- Button -->
-											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+									<!--for add to cart-->
+											<form action="{{url('/addcart',$products->P_id)}}" method="post">
+												@csrf
+												@auth
+												<input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
+												@endauth
+											<button type="submit" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" class="block2-btn-addcart">
 												Add to Cart
 											</button>
+									</form>
 										</div>
 									</div>
 								</div>
 
 								<div class="block2-txt p-t-20">
-									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+									<a href="product-detail.html" style="font-weight:bold;font-size:20px;" class="block2-name dis-block s-text3 p-b-5">
 										{!! $products->P_name !!}
 									</a>
 
@@ -81,7 +96,17 @@
 										Rs {!! $products->Rate !!}
 									</span>
 								</div>
-								<div class="block2-txt p-t-20">
+
+								<style type="text/css">
+									.viewmore:hover
+									{
+										text-decoration: underline;
+									}
+								</style>
+
+								<a  style="color:blue;" class="viewmore"  data-toggle="collapse" data-parent="#accordion" href="#{{ $products->P_id}}"> View More</a>
+
+								<div class="block2-txt p-t-20 panel-collapse collapse in" id="{{ $products->P_id}}" >
 									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
 										Description: {!! $products->P_description !!}
 									</a>
@@ -91,6 +116,10 @@
 									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
 										Exp: {!! $products->P_expdate !!}
 									</a>
+										<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+										Category: {!! $products->Ptype_name !!}
+									</a>
+									
 									
 
 									

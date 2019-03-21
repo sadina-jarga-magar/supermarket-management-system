@@ -149,13 +149,7 @@
 	<script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
 	<script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
 	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
-	<script type="text/javascript">
-		$('.block2-btn-addcart').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
+	<!-- <script type="text/javascript">
 
 		$('.block2-btn-addwishlist').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
@@ -163,7 +157,7 @@
 				swal(nameProduct, "is added to wishlist !", "success");
 			});
 		});
-	</script>
+	</script> -->
 	<script src="js/main.js"></script>
 
 </body>

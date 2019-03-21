@@ -123,7 +123,7 @@ class ProductController extends Controller
         $pro->Ptype_id=$request->Ptype_name;
         $pro->P_name=$request->P_name;
         $pro->P_description=$request->P_description;
-        $pro->P_img='vdcshdc.jpg';
+        $pro->P_img=$request->P_img;
         $pro->P_mfdate=$request->P_mfdate;
         $pro->P_expdate=$request->P_expdate;
         $pro->Rate=$request->Rate;
@@ -150,7 +150,18 @@ class ProductController extends Controller
         $producttype = $producttype->get();
         return view('product.insertp',[
             'producttype'=>$producttype]);
+
+  
+
     }
+    
+//     public function retrievept()
+//     {
+//      $getpt = DB:table('product')
+//         ->join('producttype','producttype.Ptype_id','=','product.P_id')
+//         ->get();
+//         return view('/')
+// }
 
 
     

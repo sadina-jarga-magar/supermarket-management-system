@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<script type="text/javascript">
+    var msg='{{Session::get('firstLogin')}}';
+    var exist='{{Session::has('firstLogin')}}';
+    if(exist)
+    {
+        alert(msg);
+    }
+</script>>
 <div class="container" style="margin-top: 10%;">
     <h1 class="text-center" style="margin-bottom: 2%; padding: -9px;margin-right:72px;"> Login Form</h1>
     <div class="row">   

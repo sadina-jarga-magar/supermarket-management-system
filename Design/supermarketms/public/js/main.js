@@ -15,7 +15,7 @@
         loadingClass: 'animsition-loading-1',
         loadingInner: '<div data-loader="ball-scale"></div>',
         timeout: false,
-        timeoutCountdown: 5000,
+        timeoutCountdown: 3000,
         onLoadEvent: true,
         browser: [ 'animation-duration', '-webkit-animation-duration'],
         overlay : false,
