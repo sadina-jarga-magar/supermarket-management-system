@@ -38,22 +38,20 @@
 										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 									</button>
 
-									<input class="size8 m-text18 t-center num-product" onchange="tot()" type="number" name="num-product1" class="qt" value="1">
+									<input class="size8 m-text18 t-center num-product"  type="number" name="num-product1" class="qt" id="qty{{$products->P_id}}" value="0">
 
 									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
 									</button>
 								</div>
 							</td>
-							<td class="column-5" id="total"> </td>
-						<!-- 	<script type="text/javascript">
-								var rate=document.getElementById('rt').text;
-								var qty=document.getElementById('qt').value;
-								$()function tot()
-								{
-									document.getElementById('total').text=rate*qty;
-								}
-							</script> -->
+							<td class="column-5" id="total"> 
+								@php
+                                  $r= $products->Rate;
+                                  $total=$r*2;
+                                  echo $total;
+                                  @endphp
+                                  </td>
 						
 						<td class="column-6"> 
 						 <form action="{!! url('cart',[$products->id]) !!}" method="POST">
@@ -135,7 +133,7 @@
 					</span>
 
 					<span class="m-text21 w-size20 w-full-sm">
-						Rs 120
+						{!! $total !!}
 					</span>
 				</div>
 

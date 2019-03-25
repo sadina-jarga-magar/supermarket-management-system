@@ -24,9 +24,16 @@
 	</form>
         </div>
       </div>
+
       <div class="container" style="margin-left:14%;">
         <h2 style="margin-top:20%;margin-right:40%;"><u>List of product type</u></h2>
-        <table class="table table-bordered">
+<div class="row" >
+<div class="col-md-4">
+<input  class="s-text7 size6 p-l-23 p-r-50"  type="text" id="myInput" onkeyup="myFunction()" placeholder="Search a product type..."
+style="background: #f5f7f5;; color: rgb(61, 38, 38);margin-left:180%;margin-bottom:10px;">
+</div>
+</div>
+        <table  id="myTable" class="table table-bordered">
             <thead>
             <tr>
                 <th>SN.</th>
@@ -85,3 +92,26 @@
         alert(msg);
       }
 </script>
+  <script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
+

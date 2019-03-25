@@ -30,6 +30,28 @@ class AddcartController extends Controller
         $cart->user_id=$request->user_id;
         $cart->save();
         return redirect()->back()->with('passed','your product is added in your cart!!');
+        // $user =auth()->user();
+        // //$user=$request->user_id;
+        // //$cart = new Addcart;
+        // $carts=Addcart::all();
+        // foreach($carts as $cart )
+        // {
+        //     if($cart->P_id==$id && $cart->user_id==$user)
+        //     {
+        //   return redirect()->back()->with('passed','your product is already added in your cart!!');
+
+        // }
+        // else
+        // {
+        // $cart = new Addcart;
+        // $cart->P_id=$id;
+        // $cart->user_id=$request->user_id;
+        // $cart->save();
+        // return redirect()->back()->with('passed','your product is added in your cart!!'); 
+        // }
+      
+        // }
+        
 
     }
 
@@ -56,8 +78,15 @@ class AddcartController extends Controller
           $order= DB::table('addcart')
           ->join('product','product.P_id','=','addcart.P_id')
           ->where('user_id',$user->id)->get();
+          $total=0;
 
-     return view('/cart',compact('order'));
+          
+          foreach($order as $orders)
+          {
+            $total=$total+$orders->Rate;
+          }
+
+     return view('/cart',compact('order','total'));
     }
 
     /**

@@ -120,10 +120,22 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $pro=Product::find($id);
+
+        if ($request->hasFile('P_img'))
+    {
+            $pictureInfo = $request->file('P_img');
+            $name =$pictureInfo->getClientOriginalName();
+             $folder = "itemImages/";
+            $pro->P_img = $name;
+            $pictureInfo->move($folder, $name); 
+            $picUrl = $folder.$name;  
+            $pro->save();                  
+        }   
+
         $pro->Ptype_id=$request->Ptype_name;
         $pro->P_name=$request->P_name;
         $pro->P_description=$request->P_description;
-        $pro->P_img=$request->P_img;
+        $pro->P_img=$picUrl;
         $pro->P_mfdate=$request->P_mfdate;
         $pro->P_expdate=$request->P_expdate;
         $pro->Rate=$request->Rate;
@@ -150,9 +162,6 @@ class ProductController extends Controller
         $producttype = $producttype->get();
         return view('product.insertp',[
             'producttype'=>$producttype]);
-
-  
-
     }
     
 //     public function retrievept()
@@ -161,9 +170,6 @@ class ProductController extends Controller
 //         ->join('producttype','producttype.Ptype_id','=','product.P_id')
 //         ->get();
 //         return view('/')
-// }
-
-
-    
+// }    
 }
 
