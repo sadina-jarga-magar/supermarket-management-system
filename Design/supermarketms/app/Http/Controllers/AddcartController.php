@@ -25,11 +25,43 @@ class AddcartController extends Controller
      */
     public function create(Request $request,$id)
     {
-        $cart = new Addcart;
-        $cart->P_id=$id;
-        $cart->user_id=$request->user_id;
-        $cart->save();
-        return redirect()->back()->with('passed','your product is added in your cart!!');
+        //     //For duplicate products
+        //     $count_duplicateProducts = Cart::where([
+        //         'product_id' => $inputToCart['product_id'],
+        //         // Add if products details are available
+        //     ])->count();
+        //     if ($count_duplicateProducts > 0) {
+        //         return back()->with('message', 'Product is already added!!');
+        //     } else {
+        //         //Cart added
+        //         Cart::create($inputToCart);
+        //         return back()->with('message', 'Product added to card');
+        //     }
+        // } else {
+        //     return back()->with('message', 'Stock is not available');
+        // }
+
+
+        // $duplicate_product=Addcart::where('P_id',$request->$id);
+        // return $duplicate_product;
+
+        $duplicate_product=DB::table('addcart')->where('P_id',$request->$id);
+
+        // return $duplicate_product;
+        if($duplicate_product->count()>0){
+            return back()->with('message', 'Product is already added!!');
+        }else{
+
+            $cart = new Addcart;
+            $cart->P_id=$id;
+            $cart->user_id=$request->user_id;
+            $cart->save();
+            return redirect()->back()->with('passed','your product is added in your cart!!');            
+        }
+
+
+
+
         // $user =auth()->user();
         // //$user=$request->user_id;
         // //$cart = new Addcart;
@@ -124,4 +156,6 @@ class AddcartController extends Controller
         $delcart->delete();
          return redirect()->to('/cart')->withSuccess('Product is deleted from your cart successfully!!');
     }
+
+    
 }

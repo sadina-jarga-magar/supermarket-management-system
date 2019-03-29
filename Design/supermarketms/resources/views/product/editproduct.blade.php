@@ -79,6 +79,12 @@
             <label for=" rate"><i class="fa fa-money"></i>  Rate :</label>
             <input type="form-control"  class="form-control" value="{!! $product->Rate !!}" name="Rate" required>
             </div>
+
+
+      <div class="form-group">
+            <label for="qty"><i class="fa fa-sort-numeric-asc"></i>  Quantity :</label>
+            <input type="form-control"  class="form-control" value="{!! $product->Quantity  !!}" name="Quantity" required>
+            </div>
           
 		<div class="row">
           <div class="col-md-6">

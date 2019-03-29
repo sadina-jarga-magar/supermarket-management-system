@@ -37,7 +37,7 @@ class LoginController extends Controller
             return '/admindash';
             break;
             case '2':
-            return '/home';
+            return '/';
             default:
             return 'welcome';
             break;

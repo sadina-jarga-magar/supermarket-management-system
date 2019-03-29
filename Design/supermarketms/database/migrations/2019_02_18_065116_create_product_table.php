@@ -21,6 +21,7 @@ class CreateProductTable extends Migration
             $table->date('P_mfdate');
             $table->date('P_expdate');
             $table->double('Rate');
+            $table->double('Quantity');
              $table->integer('Ptype_id')->unsigned();
             $table->foreign('Ptype_id')->references('Ptype_id')->on('producttype');
            

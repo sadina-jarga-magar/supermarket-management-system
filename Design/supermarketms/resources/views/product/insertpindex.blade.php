@@ -23,6 +23,7 @@ style="background: #f5f7f5;; color: rgb(61, 38, 38);margin-left:2%;margin-top:30
                 <th> Manufactured Date</th>
                 <th> Expired Date</th>
                 <th>Rate</th>
+                <th>Quantity</th>
                 <th>Posted Date</th>
                 <th>Action</th>
             </tr>
@@ -39,6 +40,7 @@ style="background: #f5f7f5;; color: rgb(61, 38, 38);margin-left:2%;margin-top:30
                         <td> {!! str_limit($product->P_mfdate) !!}</td>
                         <td>{!! str_limit($product->P_expdate) !!}</td>
                         <td>{!! str_limit($product->Rate) !!}</td>
+                        <td>{!! str_limit($product->Quantity) !!}</td>
                         <td>{!! $product->created_at !!}</td>
 
                         <td>

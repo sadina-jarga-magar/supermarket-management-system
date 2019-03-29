@@ -14,16 +14,21 @@
 			<!-- Cart item -->
 			<div class="container-table-cart pos-relative">
 				<div class="wrap-table-shopping-cart bgwhite">
-					<table class="table-shopping-cart">
-						<tr class="table-head">
-							<th class="column-1">Image</th>
-							<th class="column-2">Product</th>
-							<th class="column-3">Price</th>
-							<th class="column-4 p-l-70">Quantity</th>
-							<th class="column-5">Total</th>
-							<th class="column-6">Action</th>
-						</tr>
-					@foreach($order as $products)
+					<table class="table-shopping-cart" id="tableCalc">
+						<thead>
+							<tr class="table-head">
+								<th class="column-1">Image</th>
+								<th class="column-2">Product</th>
+								<th class="column-3">Price</th>
+								<th class="column-4 p-l-70">Quantity</th>
+								<th class="column-5">Total</th>
+								<th class="column-6">Action</th>
+							</tr>
+						</thead>
+
+
+						<tbody>
+							@foreach($order as $products)
 						<tr class="table-row">
 							<td class="column-1">
 								<div class="cart-img-product b-rad-4 o-f-hidden">
@@ -31,26 +36,24 @@
 								</div>
 							</td>
 							<td class="column-2">{{ $products->P_name}}</td>
-							<td class="column-3" class="rt">{{ $products->Rate}}</td>
+							<td class="column-3" id="price" class="price" name="price">{{ $products->Rate}}</td>
 							<td class="column-4">
 								<div class="flex-w bo5 of-hidden w-size17">
 									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 									</button>
 
-									<input class="size8 m-text18 t-center num-product"  type="number" name="num-product1" class="qt" id="qty{{$products->P_id}}" value="0">
+									<input class="size8 m-text18 t-center num-product"  type="number" name="qty" class="qty" value="0" id="amt">
 
 									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+										<i class="fs-12 fa fa-plus" id ="btn11" onclick="calc()" aria-hidden="true"></i>
 									</button>
 								</div>
 							</td>
-							<td class="column-5" id="total"> 
-								@php
-                                  $r= $products->Rate;
-                                  $total=$r*2;
-                                  echo $total;
-                                  @endphp
+
+                                  
+							<td class="column-5">  
+								<label class="total" name="total" id="total"></label>
                                   </td>
 						
 						<td class="column-6"> 
@@ -64,7 +67,44 @@
                         </td>
                         </tr>
 						@endforeach
+						</tbody>
 					</table>
+					<script src="{{asset('js/app.js')}}"></script>
+					<script type="text/javascript">
+						function calc(){
+
+						var amt = document.getElementById("amt").value;
+
+						var price = document.getElementById("price").textContent;
+
+						var total = amt * price;
+						document.getElementById("total").innerHTML = total;
+						//alert(price);
+
+						}
+
+
+							/*
+
+                                  	var $tblrows = $("#tableCalc tbody tr");
+									$tblrows.each(function (index) {
+									    var $tblrow = $(this);
+
+									    $tblrow.find('.qty').on('change', function (index) {
+										var qty = $tblrow.find("[name=qty]").val();
+										alert("lllllll"+qty);
+										var price = $tblrow.find("[name=price]").textContent;
+										var subTotal = parseInt(qty,10) * parseFloat(price);
+									// if (!isNaN(subTotal)) {
+ 
+									    $tblrow.find("[name=total]").textContent(subTotal);
+									// }
+
+									});
+									});
+
+									*/
+                                  </script>
 				</div>
 			</div>
 
@@ -133,7 +173,7 @@
 					</span>
 
 					<span class="m-text21 w-size20 w-full-sm">
-						{!! $total !!}
+						<!-- {!! $total !!} -->
 					</span>
 				</div>
 
@@ -157,3 +197,7 @@
         alert(msg);
       }
 </script>
+
+
+   
+    

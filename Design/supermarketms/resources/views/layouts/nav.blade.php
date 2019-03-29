@@ -64,9 +64,27 @@
 
 				<!-- Header Icon -->
 				<div class="header-icons">
+					@guest
+					<li>
 					<a href="{{ route('login') }}" class="header-wrapicon1 dis-block">
 					<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
+					</li>
+					@else
+					<li>
+						<a class="btn btn-sm btn-primary-outline display-4" href="{{ route('logout') }}" 
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><span class="mbrib-logout mbr-iconfont mbr-iconfont-btn"></span>
+                                        {{ __('Logout') }}
+                                    </a>
+                                     <a href="{{ url('editprofile')}}">Edit Profile </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                        </form> 
+                                    </li>
+                                    @endguest
+
+					
 
 					<span class="linedivide1"></span>
 

@@ -75,6 +75,7 @@ class ProductController extends Controller
         $product->P_mfdate = $form_req['P_mfdate'];
         $product->P_expdate = $form_req['P_expdate'];
         $product->Rate = $form_req['Rate'];
+        $product->Quantity = $form_req['Quantity'];
         $product->Ptype_id = $form_req['Ptype_name'];
         $status = $product->save();
         return redirect()->to('insertpindex');
@@ -135,10 +136,11 @@ class ProductController extends Controller
         $pro->Ptype_id=$request->Ptype_name;
         $pro->P_name=$request->P_name;
         $pro->P_description=$request->P_description;
-        $pro->P_img=$picUrl;
+        $pro->P_img=$picUrl;    
         $pro->P_mfdate=$request->P_mfdate;
         $pro->P_expdate=$request->P_expdate;
         $pro->Rate=$request->Rate;
+        $pro->Quantity=$request->Quantity;
         $pro->save();
         return redirect()->to('insertpindex');
     }
