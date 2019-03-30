@@ -18,7 +18,7 @@ Route::get('/product', function(){
     return view('product');
 });//->middleware('auth'); //restrict page without login.
 
-Route::get('/cart', 'AddcartController@show');
+Route::get('/cart', 'AddcartController@show')->middleware('auth');
 
 Route::get('/about', function(){
     return view('about');

@@ -45,10 +45,11 @@ class AddcartController extends Controller
         // $duplicate_product=Addcart::where('P_id',$request->$id);
         // return $duplicate_product;
 
-        $duplicate_product=DB::table('addcart')->where('P_id',$request->$id);
-
-        // return $duplicate_product;
-        if($duplicate_product->count()>0){
+        // return request->id;
+        
+        //using eloquent
+        $duplicate_product=Addcart::where('P_id',$request->id)->where('user_id',$request->user_id)->count();
+        if($duplicate_product>0){
             return back()->with('message', 'Product is already added!!');
         }else{
 

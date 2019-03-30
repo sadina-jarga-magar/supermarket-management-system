@@ -14,8 +14,8 @@
 			<!-- Cart item -->
 			<div class="container-table-cart pos-relative">
 				<div class="wrap-table-shopping-cart bgwhite">
-					<table class="table-shopping-cart" id="tableCalc">
-						<thead>
+					<table class="table-shopping-cart">
+						<thead class="bg-light">
 							<tr class="table-head">
 								<th class="column-1">Image</th>
 								<th class="column-2">Product</th>
@@ -28,6 +28,7 @@
 
 
 						<tbody>
+							@if($order->count()>0)
 							@foreach($order as $products)
 						<tr class="table-row">
 							<td class="column-1">
@@ -36,24 +37,15 @@
 								</div>
 							</td>
 							<td class="column-2">{{ $products->P_name}}</td>
-							<td class="column-3" id="price" class="price" name="price">{{ $products->Rate}}</td>
+							<td class="column-3 price" name="price">{{ $products->Rate}}</td>
 							<td class="column-4">
-								<div class="flex-w bo5 of-hidden w-size17">
-									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-									</button>
 
-									<input class="size8 m-text18 t-center num-product"  type="number" name="qty" class="qty" value="0" id="amt">
-
-									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-										<i class="fs-12 fa fa-plus" id ="btn11" onclick="calc()" aria-hidden="true"></i>
-									</button>
-								</div>
+									<input type="number" name="qty" class="qty text-center bg-light pt-2 pb-2" value="1" min="1" oninput="validity.valid||(value='');">
 							</td>
 
                                   
-							<td class="column-5">  
-								<label class="total" name="total" id="total"></label>
+							<td class="column-5 total">  
+								{{ $products->Rate}}
                                   </td>
 						
 						<td class="column-6"> 
@@ -62,72 +54,89 @@
                                 {!! method_field('DELETE') !!}
                                 
                               
-                                <button type="submit"name="delete" class="btn btn-danger btn-sm"> Delete</button>
+                                <button type="submit"name="delete" class="btn btn-danger btn-sm mr-4"> Delete</button>
                             </form>
                         </td>
                         </tr>
 						@endforeach
+						@else
+						
+					<h2 class="text-center">Your cart is empty right now!!</h2>
+                                  
+						@endif
 						</tbody>
 					</table>
-					<script src="{{asset('js/app.js')}}"></script>
+
+					<!-- online resource for jquery -->
+					<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+
+
+					<!-- offline resource for jquery  -->
+					<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
 					<script type="text/javascript">
-						function calc(){
+						$(document).ready(function(){
 
-						var amt = document.getElementById("amt").value;
+							var prices = $('.total');
+							var total = 0;
+							var Gtotal = 0;
+							 $.each(prices, function(i, price){
+							  var pc=$(this).text();  
+							  if (pc!= 'NA'){
+							       total = total + parseInt(pc,10);
+							       Gtotal = total + 100;
+							  }});
+							$('#subTotal').text(total);
+							$('#GTotal').text(Gtotal);
 
-						var price = document.getElementById("price").textContent;
-
-						var total = amt * price;
-						document.getElementById("total").innerHTML = total;
-						//alert(price);
-
-						}
 
 
-							/*
+							$('.qty').change(function () {
+						    
+						    var q = $(this).val();
+						    var p = $(this).closest('tr').find('.price').text();
+						    var tot = p*q;
 
-                                  	var $tblrows = $("#tableCalc tbody tr");
-									$tblrows.each(function (index) {
-									    var $tblrow = $(this);
+						    $(this).closest('tr').find('.total').text(tot);
 
-									    $tblrow.find('.qty').on('change', function (index) {
-										var qty = $tblrow.find("[name=qty]").val();
-										alert("lllllll"+qty);
-										var price = $tblrow.find("[name=price]").textContent;
-										var subTotal = parseInt(qty,10) * parseFloat(price);
-									// if (!isNaN(subTotal)) {
- 
-									    $tblrow.find("[name=total]").textContent(subTotal);
-									// }
+						    var prices = $('.total');
+							var total = 0;
+							var Gtotal = 0;
+							 $.each(prices, function(i, price){
+							  var pc=$(this).text();  
+							  if (pc!= 'NA'){
+							       total = total + parseInt(pc,10);
+							       Gtotal = total + 100;
+							  }});
+							$('#subTotal').text(total);
+							$('#GTotal').text(Gtotal);
+						});	
 
-									});
-									});
+							$('.qty').keyup(function () {
+						    
+						    var q = $(this).val();
+						    var p = $(this).closest('tr').find('.price').text();
+						    var tot = p*q;
 
-									*/
-                                  </script>
+						    $(this).closest('tr').find('.total').text(tot);
+
+						    var prices = $('.total');
+							var total = 0;
+							var Gtotal = 0;
+							 $.each(prices, function(i, price){
+							  var pc=$(this).text();  
+							  if (pc!= 'NA'){
+							       total = total + parseInt(pc,10);
+							       Gtotal = total + 100;
+							  }});
+							$('#subTotal').text(total);
+							$('#GTotal').text(Gtotal);
+						});	
+						});
+						
+                    </script>
 				</div>
 			</div>
 
-			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
-				<div class="flex-w flex-m w-full-sm">
-				</div>
-				
-				<div class="size10 trans-0-4 m-t-10 m-b-10">
-					<!-- Button -->
-					<form method="post" action="{{url('/orderproduct',$products->P_id)}}">
-												@csrf
-												{{ method_field('put')}}
-
-												<input type="hidden" name="P_id" value="{{$products->P_id}}" />
-												@auth
-												<input type="hidden" name="user__id" value="{{Auth::user()->id}}" />
-												@endauth
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Confirm cart
-					</button>
-						</form>
-				</div>
-			</div>
 			
 
 			<!-- Total -->
@@ -142,8 +151,8 @@
 						Subtotal:
 					</span>
 
-					<span class="m-text21 w-size20 w-full-sm">
-						Rs 120
+					<span class="m-text21 w-size20 w-full-sm" id="subTotal">
+						
 					</span>
 				</div>
 
@@ -154,40 +163,41 @@
 					</span>
 
 					<div class="w-size20 w-full-sm">
-						<p class="s-text8 p-b-23">
-							There are no shipping methods available. Please double check your address, or contact us if you need any help.
-						</p>
-						<div class="size14 trans-0-4 m-b-10">
-							<!-- Button -->
-							<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-								Update Totals
-							</button>
-						</div>
+						Rs. <label>100</label>
 					</div>
 				</div>
 
 				<!--  -->
 				<div class="flex-w flex-sb-m p-t-26 p-b-30">
 					<span class="m-text22 w-size19 w-full-sm">
-						Total:
+						Grand Total:
 					</span>
 
+
 					<span class="m-text21 w-size20 w-full-sm">
-						<!-- {!! $total !!} -->
+						<label  id="GTotal"></label>
 					</span>
 				</div>
 
 				<div class="size15 trans-0-4">
-					<!-- Button -->
+					<form method="post" action="">
+												@csrf
+												{{ method_field('put')}}
+
+												<input type="hidden" name="P_id" value="" />
+												@auth
+												<input type="hidden" name="user__id" value="{{Auth::user()->id}}" />
+												@endauth
 					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Proceed to Checkout
+						Confirm cart
 					</button>
+						</form>
 				</div>
 			</div>
 		</div>
 	</section>
 @endsection
-<script src="js/main.js"></script>
+
 
     <script>
       var msg = '{{Session::get('success')}}';
