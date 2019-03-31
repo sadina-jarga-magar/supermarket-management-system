@@ -25,29 +25,9 @@ class AddcartController extends Controller
      */
     public function create(Request $request,$id)
     {
-        //     //For duplicate products
-        //     $count_duplicateProducts = Cart::where([
-        //         'product_id' => $inputToCart['product_id'],
-        //         // Add if products details are available
-        //     ])->count();
-        //     if ($count_duplicateProducts > 0) {
-        //         return back()->with('message', 'Product is already added!!');
-        //     } else {
-        //         //Cart added
-        //         Cart::create($inputToCart);
-        //         return back()->with('message', 'Product added to card');
-        //     }
-        // } else {
-        //     return back()->with('message', 'Stock is not available');
-        // }
-
-
-        // $duplicate_product=Addcart::where('P_id',$request->$id);
-        // return $duplicate_product;
-
-        // return request->id;
         
-        //using eloquent
+        
+        //using eloquent which uses model to search data
         $duplicate_product=Addcart::where('P_id',$request->id)->where('user_id',$request->user_id)->count();
         if($duplicate_product>0){
             return back()->with('message', 'Product is already added!!');
@@ -59,31 +39,6 @@ class AddcartController extends Controller
             $cart->save();
             return redirect()->back()->with('passed','your product is added in your cart!!');            
         }
-
-
-
-
-        // $user =auth()->user();
-        // //$user=$request->user_id;
-        // //$cart = new Addcart;
-        // $carts=Addcart::all();
-        // foreach($carts as $cart )
-        // {
-        //     if($cart->P_id==$id && $cart->user_id==$user)
-        //     {
-        //   return redirect()->back()->with('passed','your product is already added in your cart!!');
-
-        // }
-        // else
-        // {
-        // $cart = new Addcart;
-        // $cart->P_id=$id;
-        // $cart->user_id=$request->user_id;
-        // $cart->save();
-        // return redirect()->back()->with('passed','your product is added in your cart!!'); 
-        // }
-      
-        // }
         
 
     }

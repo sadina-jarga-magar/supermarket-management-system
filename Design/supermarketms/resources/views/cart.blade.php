@@ -54,7 +54,7 @@
                                 {!! method_field('DELETE') !!}
                                 
                               
-                                <button type="submit"name="delete" class="btn btn-danger btn-sm mr-4"> Delete</button>
+                                <button type="submit"name="delete" onclick="if (!confirm('Are you sure to delete this product?')) { return false }" class="btn btn-danger btn-sm mr-4"> Delete</button>
                             </form>
                         </td>
                         </tr>
@@ -186,9 +186,9 @@
 
 												<input type="hidden" name="P_id" value="" />
 												@auth
-												<input type="hidden" name="user__id" value="{{Auth::user()->id}}" />
+												<input type="hidden" name="user_id" value="{{Auth::user()->id}}" />
 												@endauth
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">
 						Confirm cart
 					</button>
 						</form>

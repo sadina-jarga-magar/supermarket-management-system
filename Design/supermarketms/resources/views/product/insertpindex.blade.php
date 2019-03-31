@@ -56,7 +56,7 @@ style="background: #f5f7f5;; color: rgb(61, 38, 38);margin-left:2%;margin-top:30
                                 {!! method_field('DELETE') !!}
                                 
                                
-                                <button type="submit"name="delete" class="btn btn-danger btn-sm"> Delete</button>
+                                <button type="submit"name="delete" onclick="if (!confirm('Are you sure to delete this medicine?')) { return false }" class="btn btn-danger btn-sm"> Delete</button>
                             </form>
                         </td>
                     </tr>

@@ -107,3 +107,20 @@ Route::post('/addcart/{id}','AddcartController@create');
 
 //delete cart
 Route::delete('/cart/{id}','AddcartController@destroy');
+
+//for order 
+Route::put('/cart','OrderController@store');
+
+//searching product by name
+
+
+
+// Route::any('/product',function(){
+//     $search= Input::get('search');
+//     $productname=Product::where('P_name','LIKE','%' .$search.'%')->get();
+
+//     if(count($productname)>0)
+//         return view('product')->withDetails($productname)->withQuery ($search);
+//     else return view ('product')->withMessage('No data found');
+
+// });

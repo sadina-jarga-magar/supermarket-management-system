@@ -45,6 +45,8 @@ class OrderController extends Controller
         $order->O_date = (Carbon::now('Asia/Kathmandu')->toDateTimeString('Y-m-d H:i'));
         $order->quantity = $request->user_id;
         $order->P_id = $request->P_id;
+        $order->save();
+        return redirect()->to('cart');
     }
 
     /**

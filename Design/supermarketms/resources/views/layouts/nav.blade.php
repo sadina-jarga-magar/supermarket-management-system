@@ -71,6 +71,7 @@
 					</a>
 					</li>
 					@else
+					  <li ><a href="{{url('/')}}" style> {{ Auth::user()->name }}</i></a>
 					<li>
 						<a class="btn btn-sm btn-primary-outline display-4" href="{{ route('logout') }}" 
                                        onclick="event.preventDefault();
