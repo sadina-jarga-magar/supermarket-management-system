@@ -10,12 +10,13 @@
     }
 </script>>
 <div class="container" style="margin-top: 10%;">
-    <h1 class="text-center" style="margin-bottom: 2%; padding: -9px;margin-right:72px;"> Login Form</h1>
+    
     <div class="row">   
       <div class="col-md-3"></div>
       <div class="col-md-5">
-        <div class="jumbotron" style=" background: -webkit-gradient(white,white);">
+        <div class="jumbotron" style="background:lightblue;">
           <form method="POST"  action="{{ route('login') }}" enctype="multipart/form-data">
+            <h1 class="text-center" style="margin-bottom:8%;"> Sign In</h1>
           @csrf
             <input type="hidden" name="size" value="1000000">
 			 <div class="form-group">
@@ -44,7 +45,7 @@
 
             <div class="form-group row" style="margin-left:90px;">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary" style="margin-left:60px">
+                                <button type="submit" class="btn btn-success" style="margin-left:60px">
                                     {{ __('Login') }}
                                 </button>
 
@@ -54,7 +55,9 @@
                                     </a>
                                 @endif
                             </div>
+
                         </div>
+                        
                         <div class="">
                         <label style="margin-left:10px;">Don't have an account?</label>
                         <a href="/register" style="color:red;"> Signup</a>

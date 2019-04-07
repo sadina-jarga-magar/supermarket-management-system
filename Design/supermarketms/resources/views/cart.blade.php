@@ -31,16 +31,20 @@
 							@if($order->count()>0)
 							@foreach($order as $products)
 						<tr class="table-row">
+
+							<td style="display: none;">
+								<input type="text" name="P_id[]" value="{{ $products->P_id}}" readonly>
+							</td>
 							<td class="column-1">
 								<div class="cart-img-product b-rad-4 o-f-hidden">
 									<img src="/{{ $products->P_img}}"  style="height:100px;width:110px;"alt="IMG-PRODUCT">
 								</div>
 							</td>
 							<td class="column-2">{{ $products->P_name}}</td>
-							<td class="column-3 price" name="price">{{ $products->Rate}}</td>
+							<td class="column-3 price" name="price[]">{{ $products->Rate}}</td>
 							<td class="column-4">
 
-									<input type="number" name="qty" class="qty text-center bg-light pt-2 pb-2" value="1" min="1" oninput="validity.valid||(value='');">
+									<input type="number" name="qty[]" class="qty text-center bg-light pt-2 pb-2" value="1" min="1" oninput="validity.valid||(value='');">
 							</td>
 
                                   
@@ -66,6 +70,11 @@
 						@endif
 						</tbody>
 					</table>
+
+					<div class="size12" style="margin-left:80%;">
+						 <a href="/product" type="button" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">Update cart</a>
+					
+				</div>
 
 					<!-- online resource for jquery -->
 					<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
@@ -180,16 +189,16 @@
 				</div>
 
 				<div class="size15 trans-0-4">
-					<form method="post" action="">
+					<form method="post" action="/cart">
 												@csrf
 												{{ method_field('put')}}
 
-												<input type="hidden" name="P_id" value="" />
+											
 												@auth
-												<input type="hidden" name="user_id" value="{{Auth::user()->id}}" />
+												<input type="hidden" name="user_id[]" value="{{Auth::user()->id}}" />
 												@endauth
 					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">
-						Confirm cart
+						Confirm order
 					</button>
 						</form>
 				</div>

@@ -111,6 +111,9 @@ Route::delete('/cart/{id}','AddcartController@destroy');
 //for order 
 Route::put('/cart','OrderController@store');
 
+//for orderdetails
+Route::get('/orderdetails','OrderController@index');
+
 //searching product by name
 
 

@@ -44,11 +44,6 @@ style="background: #f5f7f5;; color: rgb(61, 38, 38);margin-left:2%;margin-top:30
                         <td>{!! $product->created_at !!}</td>
 
                         <td>
-                            <!-- <form action="{!! url('product/insertp',[$product->P_id]) !!}" method="POST">
-                            {{ csrf_field() }} 
-                                {!! method_field('put') !!}
-                                 <button type="submit" name="edit" class="btn btn-primary btn-sm"> Edit</button>
-                            </form> -->
                             <a href="{!! url('product/editproduct',$product->P_id) !!}" type="button" class="btn btn-success btn-sm">Edit</a>  
                                                    
                             <form action="{!! url('insertpindex',[$product->P_id]) !!}" method="POST">
@@ -56,7 +51,7 @@ style="background: #f5f7f5;; color: rgb(61, 38, 38);margin-left:2%;margin-top:30
                                 {!! method_field('DELETE') !!}
                                 
                                
-                                <button type="submit"name="delete" onclick="if (!confirm('Are you sure to delete this medicine?')) { return false }" class="btn btn-danger btn-sm"> Delete</button>
+                                <button type="submit"name="delete" onclick="if (!confirm('Are you sure to delete this product?')) { return false }" class="btn btn-danger btn-sm"> Delete</button>
                             </form>
                         </td>
                     </tr>

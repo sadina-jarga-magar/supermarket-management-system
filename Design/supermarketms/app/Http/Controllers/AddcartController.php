@@ -27,7 +27,7 @@ class AddcartController extends Controller
     {
         
         
-        //using eloquent which uses model to search data
+        //using eloquent which uses model
         $duplicate_product=Addcart::where('P_id',$request->id)->where('user_id',$request->user_id)->count();
         if($duplicate_product>0){
             return back()->with('message', 'Product is already added!!');
@@ -39,8 +39,6 @@ class AddcartController extends Controller
             $cart->save();
             return redirect()->back()->with('passed','your product is added in your cart!!');            
         }
-        
-
     }
 
     /**

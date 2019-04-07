@@ -48,12 +48,43 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        //   request()->validate([
+
+        //     'name' => 'required|min:2|max:50',
+
+        //     'phone_no' => 'required|numeric',            
+
+        //     'email' => 'required|email|unique:users',
+
+        //     'password' => 'required|min:6',                
+
+        //     'confirm_password' => 'required|min:6|max:20|same:password',
+
+            
+
+        // ], [
+
+            // 'name.required' => 'Name is required',
+
+            // 'name.min' => 'Name must be at least 2 characters.',
+
+            // 'name.max' => 'Name should not be greater than 50 characters.',
+
+            // 'phone_no.max' => 'Phone number should be in numeric than less than 12 numbers.',
+
+           
+
+        // ]);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:50'],
             'address' => ['required', 'string', 'max:255'],
-            'phone_no' => ['required', 'string', 'max:255'],
+            'phone_no' => ['required', 'numeric'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+           'password' => ['required', 
+               'min:6', 
+               'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/', 
+               'confirmed']
         ]);
     }
 

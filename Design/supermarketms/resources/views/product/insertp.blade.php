@@ -9,7 +9,7 @@
         @endif
 
         @if($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" style="margin-left:28%;margin-top:5%;">
                 <ul class="list-unstyled">
                     @foreach($errors->all() as $error)
                         <li> {{ $error  }}</li>
@@ -36,7 +36,12 @@
        
 			<div class="form-group">
                 <label for="product name"><i class="fa fa-product-hunt"></i> Product Name :</label>
-		        <input type="text" class="form-control" placeholder="Enter your product name" name="P_name"  required>	
+		        <input type="text" placeholder="Enter your product name" name="P_name" class="form-control{{ $errors->has('P_name') ? ' is-invalid' : '' }}" required>	
+            @if ($errors->has('P_name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('P_name') }}</strong>
+                                    </span>
+                                @endif
 		   </div>	
 
             <div class="form-group">
@@ -60,22 +65,42 @@
 			
 			<div class="form-group">
             <label for=" manufacture date"><i class="fa fa-calendar"></i>  Manufactured Date :</label>
-            <input type="date" class="form-control" name="P_mfdate" required>
+            <input type="date" class="form-control{{ $errors->has('P_img') ? ' is-invalid' : '' }}" name="P_mfdate" required>
+             @if ($errors->has('P_mfdate'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('P_mfdate') }}</strong>
+                                    </span>
+                                @endif
             </div>
 			
 			<div class="form-group">
             <label for=" expired date"><i class="fa fa-calendar"></i>  Expired Date :</label>
-            <input type="date" class="form-control" name="P_expdate"  required>
+            <input type="date" class="form-control{{ $errors->has('P_img') ? ' is-invalid' : '' }}" name="P_expdate"  required>
+             @if ($errors->has('P_expdate'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('P_expdate') }}</strong>
+                                    </span>
+                                @endif
             </div>
 			
 			<div class="form-group">
             <label for=" rate"><i class="fa fa-money"></i>  Rate :</label>
-            <input type="form-control"  class="form-control" placeholder="Enter rate" name="Rate" required>
+            <input type="form-control"  class="form-control{{ $errors->has('P_img') ? ' is-invalid' : '' }}" placeholder="Enter rate" name="Rate" required>
+             @if ($errors->has('Rate'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('Rate') }}</strong>
+                                    </span>
+                                @endif
             </div>
 
               <div class="form-group">
             <label for="qty"><i class="fa fa-sort-numeric-asc"></i> Quantity:</label>
-            <input type="form-control"  class="form-control" placeholder="Enter quantity" name="Quantity" required>
+            <input type="form-control"  class="form-control{{ $errors->has('P_img') ? ' is-invalid' : '' }}" placeholder="Enter quantity" name="Quantity" required>
+             @if ($errors->has('Quantity'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('Quantity') }}</strong>
+                                    </span>
+                                @endif
             </div>
           
 		<div class="row">

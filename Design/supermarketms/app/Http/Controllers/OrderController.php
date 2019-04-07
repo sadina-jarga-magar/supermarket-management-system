@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('/products');
+        return view('Product.orderdetails');
     }
 
     /**
@@ -40,13 +40,39 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         
-        $order = new Order;
+        // $order = new Order;
 
-        $order->O_date = (Carbon::now('Asia/Kathmandu')->toDateTimeString('Y-m-d H:i'));
-        $order->quantity = $request->user_id;
-        $order->P_id = $request->P_id;
-        $order->save();
-        return redirect()->to('cart');
+        // $order->O_date = (Carbon\Carbon::now('Asia/Kathmandu')->toDateTimeString('Y-m-d H:i'));
+        // $order->quantity = $request->user_id;
+        // $order->P_id = $request->P_id;
+        // $order->save();
+        // return redirect()->to('cart');
+
+        // foreach ($request as $key=>$value)
+        // {
+        //     $data= [
+        //         'P_id' => $value['P_id'],
+        //         'quantity' => $value['qty'],
+        //         'user_id' => $value['user_id'],
+        //     ];
+        // }
+        // DB::table('order')->insert($data);
+
+        $data = array();
+        $data['P_id']= $request->get('P_id');
+        $data['quantity']  = $request->get('qty');
+        $data['user_id'] = $request->get('user_id');
+        // $insertData[] = collect($data);
+
+        DB::table('order')->insert($data);
+
+        // $pid[]=$request->get('P_id');
+        // $userid[]=$request->get('user_id');
+        // $quantity[]=$request->get('qty');
+
+
+
+
     }
 
     /**

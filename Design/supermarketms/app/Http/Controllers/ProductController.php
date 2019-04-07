@@ -44,13 +44,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate(request(), [
-        //     'P_name' => 'required | max:150',
-        //     'P_description' => 'nullable|max:1200',
+        $this->validate(request(), [
+            'P_name' => 'required | max:150',
+            'P_description' => 'required',
             
-        // ], [
-        //     'P_name.required' => 'Product name is required'
-        // ]);
+        ], [
+            'P_name.required' => 'Product name is required'
+        ]);
         $req = request();
         $form_req = $req->all();
         $product = new Product();

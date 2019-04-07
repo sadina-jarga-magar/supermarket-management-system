@@ -2,13 +2,14 @@
 
 @section('content')
 <div class="container" style="margin-top: 10%;">
-    <h1 class="text-center" style="margin-bottom: 2%; padding: -10px;"> Registration Form</h1>
+  
     <div class="row">   
       <div class="col-md-3"></div>
       <div class="col-md-6">
         <div class="jumbotron" style=" background: -webkit-gradient(white,white);">
           <form method="POST"  action="{{ route('register') }}" enctype="multipart/form-data">
             <input type="hidden" name="size" value="1000000">
+              <h1 class="text-center" style="margin-bottom: 2%; padding: -10px;"> Create an account</h1>
 {{ csrf_field() }}
             <div class="form-group">
               <label for="name"><i class="fa fa-user"></i>{{ __(' Full Name') }}</label>
@@ -21,7 +22,7 @@
             </div>
 
 			 <div class="form-group">
-              <label for="address"><i class="fa fa-address-card"></i>{{ __(' Address') }}</label>
+              <label for="address"><i class="fa fa-address-card"></i>{{ __('  Address') }}</label>
               <input id="address" type="text" name="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" value="{{ old('address') }}" required autofocus>
               @if ($errors->has('address'))
                                     <span class="invalid-feedback" role="alert">
@@ -101,6 +102,11 @@
           <div class="col-md-3" style="margin-left:180px;">
 			<input type="submit" name="signup" class="btn btn-info form-control" value="Signup">
           </div>
+           
+        </div>
+        <div class="mt-3 text-center">
+           <label style="margin-left:6px;"> Have an account?</label>
+           <a href="/login" style="color:red;"> Login</a>
         </div>
 	</form>
         </div>

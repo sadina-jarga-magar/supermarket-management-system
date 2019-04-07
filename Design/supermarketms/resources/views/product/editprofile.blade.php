@@ -2,12 +2,13 @@
 @section('title') @stop
 @section('content')
 <div class="container" style="margin-top: 10%;">
-    <h1 class="text-center" style="margin-bottom: 2%; padding: -10px;"> Edit Your Profile</h1>
+   
     <div class="row">   
       <div class="col-md-3"></div>
       <div class="col-md-6">
         <div class="jumbotron" style=" background: -webkit-gradient(white,white);">
           <form method="POST" action="{!!url('/updateprofile', Auth::user()->id)!!}" enctype="multipart/form-data">
+             <h1 class="text-center" style="margin-bottom: 2%; padding: -10px;"> Profile update</h1>
           @csrf
           {!!method_field('put')!!}
             <input type="hidden" name="size" value="1000000">
@@ -53,7 +54,7 @@
             </div>
 		<div class="row">
           <div class="col-md-6">
-			<input type="submit" name="update" class="btn btn-info form-control" value="Update">
+			<input type="submit" name="update" class="btn btn-warning  form-control fa fa-edit" value="Update account">
           </div>
         </div>
 	</form>
