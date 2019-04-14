@@ -1,5 +1,0 @@
-@include('layouts.nav2')
-@include('layouts.header2')
-@yield('content')
-@yield('title')
-@include('layouts.footer2')
