@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Product;
 use App\ProductType;
+use App\Contact;
 
 class supermarketTest extends TestCase
 {
@@ -108,17 +109,17 @@ class supermarketTest extends TestCase
     	$this->assertEquals(302,$response->status());
     }
 
-    public function testContact()
+    public function testMessage()
     {
-    	
-
-		$response=$this->call("POST",'/contactinfo',[
-		'first_name'=>"david",
-    	'last_name'=>"becam",
-    	'message'=>"how can i get my order?",
-			]);
-		
-    	$this->assertEquals(302,$response->status());
+    $cont=Contact::create([
+        'f_name'=>"david",
+        'L_name'=>"bacam",
+        'phn_no'=>'980765678',
+        'email'=>"davidbecam12@gmail.com",
+        'message'=>"how can i get my order?",
+        
+    ]);
+    $this->assertEquals('david',$cont->f_name);  
     }
 
     public function testInvalidUserLogin()
@@ -134,10 +135,22 @@ class supermarketTest extends TestCase
     	$this->assertEquals(200,$response->status());
     }
 
-    public function testWelcome()
+    public function testHome()
     {
     	$response=$this->get('/');
-    	$response->assertSee("Home");
+    	$response->assertSee("Product");
+    }
+
+    public function testDatabase()
+    {
+        $this->assertDatabaseHas('users',[
+            'email'=>'sadinajmagar1999@gmail.com']);
+    }
+
+    public function testRoute()
+    {
+        $response = $this->get('showproduct');
+        $response->assertJson(['website'=>'product']);
     }
 
 }

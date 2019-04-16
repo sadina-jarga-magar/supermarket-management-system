@@ -43,13 +43,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('product/insertpt','ProductController@create');
-//Route::get('product', 'ProductController@index'); //index
-//Route::post('product', 'ProductController@store'); //store
-
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
 //for edit profile
 Route::get('/editprofile','EditProfileController@index');
 Route::get('/editprofile/{id}','EditProfileController@edit');
@@ -120,7 +113,10 @@ Route::get('/orderdetails','OrderController@index');
 //registered user
 Route::get('/registereduser','AdminController@create');
 
-
+//testing route
+Route::get('showproduct',function(){
+    return response()->json(['website'=>'product']);
+});
 
 
 

@@ -40,12 +40,7 @@ class ProductTypeController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate(request(), [
-        //     'Ptype_name' => 'required | max:150',
-           
-        // ], [
-        //     'Ptype_name.required' => 'Product name is required'
-        // ]);
+    
         $producttype=new ProductType;
         $producttype->Ptype_name=$request->Ptype_name;
         $producttype->save();

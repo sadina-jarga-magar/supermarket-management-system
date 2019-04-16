@@ -76,7 +76,7 @@
              </a>
              <ul class="dropdown-menu">
                     <li>
-                          <a class="mbr-text pl-5 display-7" href="{{url('editProfile')}}">EditProfile
+                          <a class="mbr-text pl-5 display-7" href="{{url('editprofile')}}">EditProfile
                           </a>
                     </li>
                     <li>
