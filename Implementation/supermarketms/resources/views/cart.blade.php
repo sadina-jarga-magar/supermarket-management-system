@@ -33,7 +33,7 @@
 						<tr class="table-row">
 
 							<td style="display: none;" class="pid">
-								<input type="text" name="P_id" value="{{ $products->P_id}}" readonly>
+								<input type="text" name="pId[]" value="{{ $products->P_id}}" readonly>
 							</td>
 							<td class="column-1">
 								<div class="cart-img-product b-rad-4 o-f-hidden">
@@ -43,8 +43,7 @@
 							<td class="column-2">{{ $products->P_name}}</td>
 							<td class="column-3 price" name="price">{{ $products->Rate}}</td>
 							<td class="column-4">
-
-									<input type="number" name="qty" class="qty text-center bg-light pt-2 pb-2" value="1" min="1" oninput="validity.valid||(value='');">
+									<input type="number" name="qty[]" class="qty text-center bg-light pt-2 pb-2" value="1" min="1" oninput="validity.valid||(value='');">
 							</td>
 
                                   
@@ -70,6 +69,9 @@
 						@endif
 						</tbody>
 					</table>
+
+					<br>
+					<br>
 
 					<div class="size12" style="margin-left:80%;">
 						 <a href="/product" type="button" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">Continue shopping</a>
@@ -189,18 +191,13 @@
 				</div>
 
 				<div class="size15 trans-0-4">
-					<form method="post" action="/cart">
-												@csrf
-												{{ method_field('put')}}
 
-											
 												@auth
 												<input type="hidden" name="user_id" value="{{Auth::user()->id}}" />
 												@endauth
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" data-toggle="modal" data-target="#g" id="btnConfirm" type="button">
+					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" data-toggle="modal" data-target="#g" type="button">
 						Confirm order
 					</button>
-						</form>
 
         <!-- Modal -->
 <div class="modal fade" id="g" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -247,7 +244,7 @@
 
         <!-- Create account button -->
         <div class="form-group">
-            <button type="submit" class="flex-c-m bg1 bo-rad-25 hov1 s-text1 trans-0-4 pull-right btn-lg">Check out </button>
+            <button id="btnConfirm" class="flex-c-m bg1 bo-rad-25 hov1 s-text1 trans-0-4 pull-right btn-lg">Check out </button>
         </div> 
     </form>
     </article>
@@ -262,34 +259,45 @@
 	</section>
 @endsection
 
-<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
 <script type="text/javascript">
-	$(document).ready(function () {
-		$('#btnConfirm').click(function(){
-			$.each($columns, function(index, item) {
+	$(document).ready(function(){
+		$('#btnConfirm').click(function(e){
+			e.preventDefault();
+				var pId = $("input[name='pId[]']").map(function(){return $(this).val();}).get();
+				var qty = $("input[name='qty[]']").map(function(){return $(this).val();}).get();
+				var shipAddress = $('#address').val();
+				var contactNo = $('#phone_no').val();
+				
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+
 				$.ajax({
-					url: "{{URL('/cart')}}",
-					method: "GET",
-					data: {id: id},
-					success
-				});
-			});
-
-			console.log(values);
-		});
+							url: "{{URL('/orderCart')}}",
+							method: 'post',
+							data: {
+								pId : pId,
+								qty : qty,
+								shipAddress : shipAddress,
+								contactNo : contactNo
+							},
+							success:function(response){
+								console.log(response);
+								if (response.success==true) {
+						            alert(response.messagePass);
+						            location.reload();
+						        }
+						        else{
+						            alert(response.messageFail);
+						        }
+							}
+							
+						});
+					});
 	});
-
-
-
-// $(document).ready(function () {
-//         $("#btnConfirm").click(function () {
-
-//             var comapnyname = $(this).closest("tr").find(".pid").text();
-
-//             alert(comapnyname);
-//             console.log(comapnyname);
-//         });
-//     });
 </script>
 
 

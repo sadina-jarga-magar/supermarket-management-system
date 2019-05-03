@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Carbon;
+use Content;
+use App\Bill;
 
 
 class OrderController extends Controller
@@ -39,28 +41,45 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // $td=$request->all();
-        // foreach ($td as $key => $value) {
-        //     # code...
-        // }
-        // $order = new Order;
-
-        // $order->O_date = (Carbon\Carbon::now('Asia/Kathmandu')->toDateTimeString('Y-m-d H:i'));
-        // $order->quantity = $request->;
-        // $order->P_id = $request->P_id;
-        // $order->save();
-        // return redirect()->to('cart');
-
         $user = Auth()->user();
-         $data = array(
-                    'O_date' => (Carbon\Carbon::now('Asia/Kathmandu')->toDateTimeString('Y-m-d H:i')),
-                    'quantity'=> $request->qty,
-                    'user_id' => $user->id,
-                    'P_id' => $request->P_id;
-                );
+        DB::beginTransaction();
+        try {
+            if ($request->shipAddress==null && $request->contactNo==null ) {
+                return ['success' => false, 'messageFail' => 'Please enter both shipping address and contact no.'];
+            } 
+            else
+            {
+              
+                    $order = new Order();
+                    $order->O_date = (Carbon\Carbon::now('Asia/Kathmandu')->toDateTimeString('Y-m-d H:i'));
+                    $order->shippingAddress = $request->shipAddress;
+                    $order->contactNo = $request->contactNo;
+                    $order->user_id = $user->id;           
+                    $order->save();         
 
-        Order::insert($data);
+                $getOrder = DB::table('order')->get()->last();
+                foreach ($request->pId as $key => $v) {
+                    $data = [
+                                'order_id' => $getOrder->O_id,
+                                'quantity'=> $request->qty [$key],
+                                'P_id' => $request->pId [$key]
+                            ];
+                    Bill::insert($data);
+                }
+            }   
+        } catch (Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
 
+        try {
+            DB::table('addcart')->where('user_id',$user->id)->delete();
+        } catch (Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+        DB::commit();
+        return ['success' => true, 'messagePass' => 'Your order was successful.']; 
     }
 
     /**
@@ -69,12 +88,14 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show($id) //for product fetch
+    public function show() //for product fetch
     {
      
-     // $order= DB::table('product')->where('P_id',$id)->get();
+     $showOrders= DB::table('order')
+     ->join('users', 'users.id','=','order.user_id')
+     ->get();
 
-     // return view('cart',compact('order'));
+     return view('product.customerorders',compact('showOrders'));
 
     }
 
@@ -111,4 +132,6 @@ class OrderController extends Controller
     {
         //
     }
+     
+
 }

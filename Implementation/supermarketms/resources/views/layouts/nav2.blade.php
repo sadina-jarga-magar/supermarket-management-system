@@ -38,8 +38,8 @@
 
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Check Out
+									<a href="/registereduser" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										View user
 									</a>
 						
 		
@@ -55,30 +55,28 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="/addproducttype">Product Type</a>
-								<ul class="sub_menu">
-									<li><a href="/insertpt">INSERT</a></li>
-								</ul>
+							<i class="fa fa-list-alt"><a href="/addproducttype"> Product Type</a></i>
+								
 							</li>
 
 							<li>
-								<a href="/insertp">Product</a>
+							<i class="fa fa-product-hunt"><a href="/insertp"> Product</a></i>
 							</li>
 
 							<li>
-								<a href="/order">Order</a>
+							<i class="fa fa-shopping-cart"><a href="/customerorders"> Order</a></i>
 							</li>
 							<li>
-								<a href="/registereduser">Registered User</a>
+							<i class="fa fa-registered"><a href="/registereduser"> Registered User</a></i>
 							</li>
 							<li>
-								<a href="{!!url('/admineditprofile', Auth::user()->id)!!}">Edit Profile</a>
+							<i class="fa fa-pencil-square-o"><a href="{!!url('/admineditprofile', Auth::user()->id)!!}"> Edit Profile</a></i>
 							</li>
-							<a class="btn btn-sm btn-primary-outline display-4" href="{{ route('logout') }}" 
+							<i class="fa fa-sign-out"><a href="{{ route('logout') }}" 
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><span class="mbrib-logout mbr-iconfont mbr-iconfont-btn"></span>
+                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
+                                    </a></i>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                         </form>

@@ -166,12 +166,23 @@ class ProductController extends Controller
             'producttype'=>$producttype]);
     }
     
-//     public function retrievept()
-//     {
-//      $getpt = DB:table('product')
-//         ->join('producttype','producttype.Ptype_id','=','product.P_id')
-//         ->get();
-//         return view('/')
-// }    
+    public function productSearch(Request $request)
+    {
+     if(is_null($request->searchText))
+        {
+                 $getpro=DB::table('product')
+                ->join('producttype','producttype.Ptype_id','=','product.Ptype_id')
+                ->get();
+        }
+        else
+        {
+                $getpro=DB::table('product')
+                ->join('producttype','producttype.Ptype_id','=','product.Ptype_id')
+                ->where('product.P_name', 'LIKE','%'.$request->searchText.'%')
+                ->orWhere('producttype.Ptype_name', 'LIKE','%'.$request->searchText.'%')
+                ->get(); 
+        }
+        return view('product.productSearch', compact('getpro'));
+    }
 }
 

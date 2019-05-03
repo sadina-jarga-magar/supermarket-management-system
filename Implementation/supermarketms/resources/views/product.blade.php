@@ -48,16 +48,13 @@
 							</li>
 							@endforeach
 						</ul>
-						<form action="/" method="post" role="search">
-							@csrf
 						<div class="search-product pos-relative bo4 of-hidden input-group">
-							<input class="s-text7 size6 p-l-23 p-r-50 form-control" type="text" name="search" placeholder="Search Products...">
+							<input class="s-text7 size6 p-l-23 p-r-50 form-control" type="text" id="psearch" name="search" placeholder="Search Products...">
 
 							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
 								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
 							</button>
 						</div>
-					</form>
 					</div>
 				</div>
 
@@ -79,7 +76,7 @@
 					</script>
 
 				<!-- Product -->
-					<div class="row">
+					<div class="row" id="dataFound">
 				@foreach ($getpro as $products)
 
 						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
@@ -164,3 +161,45 @@
 	</section>
 
 	@endsection
+	
+		<script src="{{ asset('js/app.js') }}"></script>
+            <script>
+                 $(document).ready(function(){
+              //    $('#selectType').change(function(e){
+              //    e.preventDefault();
+              //    var id = $(this).val();
+              //    var resp=$.ajax({
+              //    url: "{{ URL('/searchItem') }}",
+              //    method: 'GET',
+              //    datatype : 'html',
+              //    data: {
+              //    id : id
+              //    },
+              //    success: function(response){
+              //    console.log(response);
+              //    $("#dataFound").html(response);
+              //  }     
+              //    });
+              // });
+			$('#psearch').change(function(e){
+            e.preventDefault();
+        	var textSearch = $('#psearch').val();
+            // var cat = $('#selectType').val();
+            $.ajax({
+             url: "{{ URL('/txtSearch') }}",
+             method: 'GET',
+             datatype : 'html',
+             data: {
+             searchText : textSearch,
+             // categories : cat
+           },
+           success: function(response){
+           console.log(response);
+           $("#dataFound").html(response);
+           }     
+         });
+                                         
+     });
+  });
+ </script>
+	

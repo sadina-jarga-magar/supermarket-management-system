@@ -1,7 +1,7 @@
-@extends('layouts.adminlayout')
-@section('title') @stop
-@section('content')
-<div class="container" style="margin-top: 10%;">
+@include('layouts.header2')
+@yield('content')
+@yield('title')
+<div class="container" style="margin-top: 4%;">
     <h1 class="text-center" style="margin-bottom: 2%; padding: -10px;"> Edit Your Profile</h1>
     <div class="row">   
       <div class="col-md-3"></div>
@@ -59,8 +59,8 @@
       </div>
     </div>
     </div>
+@include('layouts.footer2')
 
-@endsection
 
 <script>
       var msg = '{{Session::get('success')}}';
@@ -70,3 +70,4 @@
         alert(msg);
       }
 </script>
+

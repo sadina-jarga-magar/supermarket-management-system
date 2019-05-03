@@ -1,132 +1,149 @@
-<link rel="stylesheet" type="text/css" href="Bill/Style.css">
-<link rel="stylesheet" type="text/css" href="Bill/bootstrap.min.css">
-<script src="Bill/bootstrap.min.js"></script>
-<script src="Bill/jquery.min.js"></script>
+@include('layouts.header')
+<div class="container">
 
-<link rel="stylesheet" type="text/css" href="Bill/billjs.js">
-<!------ Include the above in your HEAD tag ---------->
-
-<div id="invoice">
-
-    <div class="toolbar hidden-print">
-        <div class="text-right">
-            <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
-            <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
-        </div>
-        <hr>
+    <div class="billTop mt-2">
+            <button type="button" id="btnPrint" value="Print" onClick="printReport()" class="ttt btn btn-primary mb-2">Print Bill</button>
     </div>
-    <div class="invoice overflow-auto">
-        <div style="min-width: 600px">
-            <header>
-                <div class="row">
-                    <div class="col">
-                        <a target="_blank" href="https://lobianijs.com">
-                            <img src="http://lobianijs.com/lobiadmin/version/1.0/ajax/img/logo/lobiadmin-logo-text-64.png" data-holder-rendered="true" />
-                            </a>
-                    </div>
-                    <div class="col company-details">
-                        <h2 class="name">
-                            <a target="_blank" href="https://lobianijs.com">
-                            Bike-Shop
-                            </a>
-                        </h2>
-                        <div>455 Foggy Heights, AZ 85004, US</div>
-                        <div>(977)-9843045363</div>
-                        <div>MotoBike@gmail.com</div>
-                    </div>
-                </div>
-            </header>
-            <main>
-                <div class="row contacts">
-                    <div class="col invoice-to">
-                        <div class="text-gray-light">INVOICE TO:</div>
-                        <h2 class="to">John Doe</h2>
-                        <div class="address">796 Silver Harbour, TX 79273, US</div>
-                        <div class="email"><a href="mailto:john@example.com">john@example.com</a></div>
-                    </div>
-                    <div class="col invoice-details">
-                        <h1 class="invoice-id">INVOICE 3-2-1</h1>
-                        <div class="date">Date of Invoice: 01/10/2018</div>
-                        <div class="date">Due Date: 30/10/2018</div>
-                    </div>
-                </div>
-                <table border="0" cellspacing="0" cellpadding="0">
-                    <thead>
-                        <tr>
-                            <th>S No</th>
-                            <th class="text-left">Bike Name</th>
-                            <th class="text-right">Price</th>
-                            <th class="text-right">HOURS</th>
-                            <th class="text-right">TOTAL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="no">04</td>
-                            <td class="text-left"><h3>
-                                <a target="_blank" href="">
-                                Youtube channel
-                                </a>
-                                </h3>
-                               <a target="_blank" href="">
-                                   Useful videos
-                               </a> 
-                               to improve your Javascript skills. Subscribe and stay tuned :)
-                            </td>
-                            <td class="unit">$0.00</td>
-                            <td class="qty">100</td>
-                            <td class="total">$0.00</td>
-                        </tr>
-                        <tr>
-                            <td class="no">01</td>
-                            <td class="text-left"><h3>Website Design</h3>Creating a recognizable design solution based on the company's existing visual identity</td>
-                            <td class="unit">$40.00</td>
-                            <td class="qty">30</td>
-                            <td class="total">$1,200.00</td>
-                        </tr>
-                        <tr>
-                            <td class="no">02</td>
-                            <td class="text-left"><h3>Website Development</h3>Developing a Content Management System-based Website</td>
-                            <td class="unit">$40.00</td>
-                            <td class="qty">80</td>
-                            <td class="total">$3,200.00</td>
-                        </tr>
-                        <tr>
-                            <td class="no">03</td>
-                            <td class="text-left"><h3>Search Engines Optimization</h3>Optimize the site for search engines (SEO)</td>
-                            <td class="unit">$40.00</td>
-                            <td class="qty">20</td>
-                            <td class="total">$800.00</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2">SUBTOTAL</td>
-                            <td>$5,200.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2">TAX 25%</td>
-                            <td>$1,300.00</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2">GRAND TOTAL</td>
-                            <td>$6,500.00</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <div class="thanks">Thank you!</div>
-                <div class="notices">
-                    <div>NOTICE:</div>
-                    <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-                </div>
-            </main>
-            <footer>
-                Invoice was created on a computer and is valid without the signature and seal.
-            </footer>
-        </div>
-        <div></div>
+<div class="container col-md-8 mt-5 pt-5 bg-light" id="printableArea">
+<div class="billingHead">
+        <h3 class="text-center font-weight-bold mb-5">LittleMart
+
+        </h3>
+    <div class="row">
+    <p class="text-left col-md-6">Date:  <label><?php
+        echo date('Y-m-d');
+        ?></label>
+
+    </p>
+
+    <p class="text-right col-md-6">Bill No. {{$bill->O_id}}</p>
     </div>
+    <div class="customer text-right">
+    <p>Customer Names: {{Auth::user()->name}}</p>
+    <p>Customer Address: {{Auth::user()->address}}</p>
+
+    </div>
+    <table class="table table-bordered" border="1">
+            <thead>
+                <tr>
+                    <th>S.N</th>
+                    <th>Item</th>
+                    <th>Item Price</th>
+                    <th>Item Quantity</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+                <tbody>
+                    @foreach($billProduct as $key => $data)
+                    <tr class="trItems">
+                        <td>{{$key + 1}}</td>
+                        <td>{{$data->P_name}}</td>
+                        <td class="Price">{{$data->Rate}}</td>
+                        <td class="Qty">{{$data->quantity}}</td>
+                        <td class="Amt"></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+        </table>
+
+        <script src="{{asset('js/app.js')}}"></script>
+        <script>
+            $(document).ready(function(){
+                  $('.trItems').each(function(){
+                    var q = $(this).closest('tr').find('.Qty').text();
+                            var p = $(this).closest('tr').find('.Price').text();
+                            var tot = p*q;
+
+                            $(this).closest('tr').find('.Amt').text(tot);
+                });
+
+
+                var Prices = $('.Amt');
+                            var total = 0;
+                            var Gtotal = 0;
+                             $.each(Prices, function(i, Price){
+                              var pc=$(this).text();
+                              if (pc!= 'NA'){
+                                   total = total + parseInt(pc,10);
+                               
+                              }});
+                var subTot = total;
+                $("#subTot").text(subTot);
+
+                var vat = (subTot)/100*13;
+                var round = Math.round(vat);
+                $("#vat").text(round);
+
+                $("#gTot").text(subTot+round);
+
+
+                $('#dis').keyup(function(){
+                    var disPer = $(this).val();
+                    var disAmt = ((subTot+round)/100)*disPer;
+                    var roundedDis = Math.round(disAmt);
+                    $("#gTot").text(subTot+round-roundedDis);
+                });
+
+                $('#dis').change(function(){
+                    var disPer = $(this).val();
+                    var disAmt = ((subTot+round)/100)*disPer;
+                    var roundedDis = Math.round(disAmt);
+                    $("#gTot").text(subTot+round-roundedDis);
+                });
+            });
+
+        </script>
+
+
+
+
+
+
+
+
 </div>
+<div class="billingBody">
+<div class="Total text-right">
+
+ Sub Total : <label  id="subTot"></label> <br>
+
+ VAT : <label id="vat"></label> <br>
+ Discount :&nbsp <input  id="dis" type="number" min="0" max="100"> % <br>
+G.Total : <label  id="gTot"></label>
+</div>
+<p class="col text-center">Thank you for your visit we hope you liked our service.</p>
+<p>LittleMart</p>
+<p>Putali line street, Dharan</p>
+<p>9803933811</p>
+</div>
+</div>
+</div>
+
+<script src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript">
+    function printReport()
+    {
+        document.getElementById('btnPrint').style.visibility = 'hidden';
+        var prtContent = document.getElementById("printableArea");
+        window.print(prtContent);
+        document.getElementById('btnPrint').style.visibility = 'visible';
+    }
+</script>
+
+<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+    <script type="text/javascript">
+        $(".selection-1").select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $('#dropDownSelect1')
+        });
+    </script>
+    <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+    <script type="text/javascript" src="js/slick-custom.js"></script>
+    <script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
+    <script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="js/main.js"></script>

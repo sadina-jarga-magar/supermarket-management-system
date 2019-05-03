@@ -32,12 +32,6 @@ Route::get('/help', function(){
 Route::get('/insertp', function(){
     return view('product.insertp');
 });
-Route::get('/order', function(){
-    return view('order');
-});
-Route::get('/generatingbill', function(){
-    return view('product.generatingbill');
-});
 
 Auth::routes();
 
@@ -105,7 +99,7 @@ Route::post('/addcart/{id}','AddcartController@create');
 Route::delete('/cart/{id}','AddcartController@destroy');
 
 //for order 
-Route::put('/cart/{id}','OrderController@store');
+Route::post('/orderCart','OrderController@store');
 
 //for orderdetails
 Route::get('/orderdetails','OrderController@index');
@@ -117,19 +111,16 @@ Route::get('/registereduser','AdminController@create');
 Route::get('showproduct',function(){
     return response()->json(['website'=>'product']);
 });
+//to make orders
+Route::get('/orders', 'BillController@index');
+//to generate bill
+Route::get('/genBill', 'BillController@show');
 
+//to show customerorders in admin
+Route::get('/customerorders', 'OrderController@show');
 
+//admin bill to show user products.
+Route::get('/usersBill', 'BillController@showAdminBill');
 
-//searching product by name
-
-
-
-// Route::any('/product',function(){
-//     $search= Input::get('search');
-//     $productname=Product::where('P_name','LIKE','%' .$search.'%')->get();
-
-//     if(count($productname)>0)
-//         return view('product')->withDetails($productname)->withQuery ($search);
-//     else return view ('product')->withMessage('No data found');
-
-// });
+//for search product in product blade
+Route::get('txtSearch','ProductController@productSearch');

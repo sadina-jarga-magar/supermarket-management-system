@@ -57,6 +57,7 @@
 							</li>
 							<li>
 								<a href="/help">Help?</a>
+								
 							</li>
 						</ul>
 					</nav>
@@ -116,8 +117,8 @@
 
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Check Out
+									<a href="{{url('/orders')}}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										View Orders
 									</a>
 								</div>
 							</div>
